@@ -1,0 +1,56 @@
+
+.nav-item{
+    /* margin-left: 80px; */
+}
+
+
+
+
+.foot {
+    height: 40px;
+    text-align: center;
+    background-color: rgb(7, 8, 71);
+    border-radius: 3%;
+    padding-top: 6px;
+    border-top: 1px solid black;
+}
+
+.foot p {
+    /* height: 40px; */
+    color: aqua;
+   
+}
+
+.nav-b{
+    background-color: aquamarine;
+}
+.nav-col{
+    background-color: white;
+}
+
+.carousel-item img{
+    width: 100%;
+    height: 400px;
+}
+.social-media-link{
+    display: flex;
+    padding-left: 20%;
+    padding-right: 40%;
+
+}
+.social-media-link li{
+    display: inline;
+    margin-left: 50px;
+    font-size: 30px;
+
+}
+
+
+@media only screen and (max-width: 600px) {
+    .social-media-link{
+        display: flex;
+        padding-left: 1%;
+    
+    }
+    
+  }

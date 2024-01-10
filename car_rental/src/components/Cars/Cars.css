@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap');
+
+.head1
+{
+   font-family:'Roboto';
+   font-weight:900;
+
+}
+.head1 .in-head1:hover{
+   margin-left: 30px;
+}
+.bg-body-tertiary
+{
+  background-color: aqua;
+}
+.outdiv
+{
+  border: #72766a solid 1px;
+}
+.head1 {
+  background-image: url('./back.jpg');
+  background-size: cover;
+  background-position:center;
+  position: static;
+}
+.head1 .in-head1
+{
+  background-color: rgba(255, 255, 255, 0);
+  color: #fefefe;
+  height:400px;
+  transition: all 0.4s linear;
+  padding-left: 30px;
+  margin-top: 200px;
+  margin-left: -700px;
+}
+.head1 .in-head1 .in-div11
+{
+  background-color: rgba(255, 255, 255, 0);
+  display:inline;
+}
+.head {
+  background-color: rgb(7, 8, 71);
+  color: white;
+  padding-left: 100px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  display: flex;
+  height: 40px;
+}

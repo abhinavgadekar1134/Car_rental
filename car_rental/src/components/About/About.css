@@ -1,0 +1,84 @@
+.about1
+{
+  height: 300px;
+  width:100%;
+  background-image: url("About.jpg");
+  background-size: cover;
+  
+}
+.about1 .about11
+{
+  height: 300px;
+  width:100%;
+  background-color: rgba(0, 44, 97, 0.7);
+  text-align: center;
+  color: white;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 40px;
+}
+.about2
+{
+  height: 300px;
+  margin-top: 20px;
+  width:100%;
+  display: flex;
+}
+.about2 .about22
+{
+  height: 350px;
+  width:100%;
+  background-image: url("About.jpg");
+  background-size: cover;
+  display: inline;
+}
+.about2 .about21
+{
+  height: 200px;
+  width:100%;
+  background: none;
+  display: inline;
+  margin-left: 20px;
+  color: rgb(25, 74, 74);
+}
+.about2 .about21 p{
+  text-align: center;
+  font-weight: 700;
+  background-color: rgb(0, 64, 143,0.3);
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-shadow: -5px 5px 20px rgb(0, 0, 0);
+}
+.about3
+{
+  margin-top: 20px;
+  width:100%;
+  display: flex;
+  margin-top: 100px;
+  
+}
+.about3 .about31
+{
+   background-image: url('a1.jpg');
+   width: 800px;
+   background-size:cover;
+   display: inline;
+}
+.about3 .about32
+{
+  height: 600px;
+  width:100%;
+  background: none;
+  display: inline;
+  margin-left: 40px;
+  color: rgb(25, 74, 74);
+}
+.about3 .about32 p{
+  text-align: center;
+  font-weight: 700;
+  background-color: rgb(0, 64, 143,0.3);
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-shadow: -5px 5px 20px rgb(0, 0, 0);
+  
+}

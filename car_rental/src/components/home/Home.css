@@ -1,0 +1,72 @@
+.head {
+    background-color: rgb(7, 8, 71);
+    color: white;
+    padding-left: 100px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: flex;
+    height: 40px;
+}
+
+.con {
+    margin-top: 4px;
+}
+
+.logreg {
+    padding-left: 800px;
+}
+
+.con-btn {
+    margin-left: 600px;
+    width: 120px;
+}
+
+.car-img {
+    height: 600px;
+    width: 100%;
+}
+
+.inner-div {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    color: black;
+    background-color: #ffffff;
+    border-radius: 2%;
+    border: 1px solid black;
+    /* opacity: 0.3; */
+    padding: 25px;
+}
+
+.about-us-h {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.aaa {
+    width: 500px;
+}
+
+.nav-linkss {
+    margin-left: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width:800px) {
+    .con-btn {
+        margin-left: 1px;
+    }
+
+    .head {
+        padding-left: 1px;
+    }
+
+    .logreg {
+        padding-left: 100px;
+    }
+
+    .inner-div {
+        display: none;
+    }
+}

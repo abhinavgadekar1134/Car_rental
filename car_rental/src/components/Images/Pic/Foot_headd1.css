@@ -1,0 +1,71 @@
+.head {
+    height: 100px;
+    display: flex;
+    background-color: goldenrod;
+}
+
+.head img {
+    width: 150px;
+    height: 100px;
+}
+
+.head-iteams {
+    display: flex;
+    padding: 20px;
+}
+
+.head-iteams li {
+    display: inline;
+    font-size: 20px;
+    padding-left: 40px;
+}
+.nav-item{
+    margin-left: 80px;
+}
+
+
+
+
+.foot {
+    height: 40px;
+    text-align: center;
+    background-color: rgb(4, 16, 83);
+    border-radius: 3%;
+}
+
+.foot p {
+    color: aqua;
+    padding: 6px;
+}
+
+.nav-b{
+    background-color: aquamarine;
+}
+.nav-col{
+    background-color: white;
+}
+
+.carousel-item img{
+    width: 100%;
+    height: 400px;
+}
+.social-media-link{
+    display: flex;
+    padding-left: 37%;
+    padding-right: 40%;
+
+}
+.social-media-link li{
+    display: inline;
+    margin-left: 50px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .social-media-link{
+        display: flex;
+        padding-left: 1%;
+    
+    }
+    
+  }

@@ -21,7 +21,7 @@ const CarUpdate = () => {
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
     useEffect(() => {
-         axios.get(`http://localhost:8000/abc/findcar/${carrnamee}`)
+         axios.get(`https://car-rental-techthunder.netlify.app/abc/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -52,7 +52,7 @@ const CarUpdate = () => {
             noSeats:noSeats,
             desc: desc,
         }
-        axios.put(`http://localhost:8000/abc/updateCar/${carrnamee}`, updata)
+        axios.put(`https://car-rental-techthunder.netlify.app/abc/updateCar/${carrnamee}`, updata)
             .then(res => {
                 console.log(res.data);
             })

@@ -46,7 +46,7 @@ const UserUpdate = (props) => {
     }
     useEffect(() => {
 
-        axios.get(`http://localhost:8000/abc/finduser/${emailid}`)
+        axios.get(`https://car-backend-8cxh.onrender.com/abc/finduser/${emailid}`)
             .then(res => {
                 console.log(res.data);
                 setfname(res.data.fname);

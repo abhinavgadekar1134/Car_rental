@@ -7,11 +7,12 @@
 
 
 .foot {
-    height: 40px;
+    height: auto;
     text-align: center;
     background-color: rgb(7, 8, 71);
     border-radius: 3%;
     padding-top: 6px;
+    padding-bottom: 6px;
     border-top: 1px solid black;
 }
 

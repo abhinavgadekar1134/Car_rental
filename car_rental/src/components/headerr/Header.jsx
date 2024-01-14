@@ -60,7 +60,7 @@ const Header = () => {
     <>
       <div className='head'>
         <div className='con'>
-          <span>Need Help? <FaPhone />&nbsp;&nbsp;Call:321-897-232-12 </span>
+          <span>Need Help? <FaPhone />&nbsp;Call:321-897-232-12 </span>
         </div>
         <div className='logreg'>
           {!validated && <Button variant="primary" onClick={handleShow2} style={{ background: "none", border: "none", color: "white" }}>

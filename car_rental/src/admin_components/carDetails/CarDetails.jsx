@@ -32,7 +32,7 @@ const CarDetails = () => {
     const handleDelete = (carname) => {
 
 
-        axios.delete(`http://localhost:8000/abc/deleteCar/${carname}`)
+        axios.delete(`https://car-rental-techthunder.netlify.app/abc/deleteCar/${carname}`)
             .then(res => {
                 console.log(res.data);
                 window.alert('data deleted')

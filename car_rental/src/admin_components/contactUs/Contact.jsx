@@ -22,7 +22,7 @@ const Contact = () => {
   const handleDelete = (email) => {
 
 
-    axios.delete(`http://localhost:8000/abc/deleteCont/${email}`)
+    axios.delete(`https://car-backend-8cxh.onrender.com/abc/deleteCont/${email}`)
       .then(res => {
         console.log(res.data);
         window.alert('data deleted')

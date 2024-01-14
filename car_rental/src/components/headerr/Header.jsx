@@ -91,7 +91,7 @@ const Header = () => {
           {!validated && <Button onClick={handleShow1} style={{ background: "none", border: "none", color: "white" }} >
             <FaArrowRightFromBracket />&nbsp; Login
           </Button>}
-          {validated && <span style={{ marginRight: "20px" }}>Welcome {uname}</span >}
+          {validated && <span>Welcome {uname}</span >}
 
           {validated && <button onClick={() => logout({})} style={{ background: "none", border: "none", color: "white" }} >
             <FaArrowAltCircleDown />&nbsp; Log Out

@@ -8,12 +8,17 @@
     height: 40px;
 }
 
-.con{
+.con {
     margin-top: 4px;
 }
 
 .logreg {
-    padding-left: 700px;
+    /* text-align: right; */
+    position: absolute;
+    /* float: right; */
+    right: 0px;
+    width: 300px;
+    /* background-color: hotpink; */
 }
 
 .con-btn {
@@ -37,19 +42,23 @@
     /* opacity: 0.3; */
     padding: 25px;
 }
-.about-us-h{
+
+.about-us-h {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-.aaa{
+
+.aaa {
     width: 500px;
 }
-.nav-linkss{
+
+.nav-linkss {
     margin-left: 20px;
     text-decoration: none;
     color: black;
 }
-@media only screen and (max-width:800px) {
+
+@media only screen and (max-width:1000px) {
     .con-btn {
         margin-left: 1px;
     }
@@ -58,7 +67,5 @@
         padding-left: 1px;
     }
 
-    .logreg {
-        padding-left: 0%;
-    }
+
 }

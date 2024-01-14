@@ -24,17 +24,19 @@ const Footer = () => {
                                 <p class="card-text">Click Below to Contact</p>
                                 <a href="#e" class="btn btn-primary">Contact Us</a>
                                 <br /><br />
-                                <ul className="social-media-link" style={{ placeItems: 'center', display: 'Row', paddingLeft: " 20px" }}>
+                                <div className="social-media-link">
+                                <ul className='ssss'>
                                     <li><FaWhatsapp  style={{color:"green"}}/></li>
                                     <li><FaInstagram  style={{color:"rgb(228, 64, 95)"}}/></li>
                                     <li><IoMdCall  style={{color:"blue"}}/></li>
                                     <li><MdEmail style={{color:"red"}}/></li>
                                 </ul>
+                                </div>
 
                             </Col>
 
                             <Col lg={4}>
-                                <div style={{ textAlign: "left", paddingLeft: "90px" }}>
+                                <div style={{ marginLeft:'auto',marginRight:'auto' }}>
                                     <h3>Help</h3>
                                     <a href="#e" style={{ color: "white", textDecoration: "none" }}>help</a><br />
                                     <a href="#e" style={{ color: "white", textDecoration: "none" }}>Contact us</a><br />

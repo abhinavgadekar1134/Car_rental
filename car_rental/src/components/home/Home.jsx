@@ -114,7 +114,7 @@ const Home = () => {
           </Col>
           <Col md={6}>
             <div>
-              <img src={carimg1} alt="" />
+              <img className='carimgg' src={carimg1} alt="" />
             </div>
 
           </Col>
@@ -244,7 +244,7 @@ const Home = () => {
           <Row>
             <Col lg={6}>
               {/* <img src={dri} style={{ height: "350px", width: "550px" }} alt='' /> */}
-              <img src={dri} style={{  marginTop: "100px", marginLeft: "40px" ,width:"auto" }} alt='' />
+              <img className='carimgg' src={dri} style={{  marginTop: "100px"}} alt='' />
             </Col>
             <Col lg={6}>
               <h3 style={{ color: "white", marginTop: "100px", marginLeft: "40px" }}>Do You Want To Earn With Us?..So<br /> Don't Be Late</h3>

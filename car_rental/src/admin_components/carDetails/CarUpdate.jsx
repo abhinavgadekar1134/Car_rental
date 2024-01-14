@@ -146,7 +146,7 @@ const CarUpdate = () => {
                                 
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Description</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e)=>{setdesc(e.target.value)}}></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" value={desc} rows="3" onChange={(e)=>{setdesc(e.target.value)}}></textarea>
                                 </div>
                             </Col>
                         </Row>

@@ -35,8 +35,8 @@
 }
 .social-media-link{
     display: flex;
-    padding-left: 20%;
-    padding-right: 40%;
+    padding-left: auto;
+    padding-right: auto;
 
 }
 .social-media-link li{

@@ -20,7 +20,7 @@ const Bookc = () => {
     const [noSeats, setnoSeats] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/abc/findcar/${carrnamee}`)
+        axios.get(`https://car-backend-8cxh.onrender.com/abc/findcar/${carrnamee}`)
             .then(res => {
                 const setdata = res.data.data;
                 console.log(res.data);

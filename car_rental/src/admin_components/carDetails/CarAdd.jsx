@@ -32,7 +32,7 @@ const CarAdd = () => {
             desc: desc,
         }
 
-        axios.post('http://localhost:8000/abc/postcar', setdata)
+        axios.post('https://car-backend-8cxh.onrender.com/abc/postcar', setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("Car data added");

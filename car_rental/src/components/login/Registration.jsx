@@ -32,7 +32,7 @@ const Registration = (event) => {
             address: address
         }
 
-        axios.post('http://localhost:8000/abc/register', setdata)
+        axios.post('https://car-backend-8cxh.onrender.com/abc/register', setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("You are successfully registered");

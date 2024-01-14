@@ -17,7 +17,7 @@ const CarDetails = () => {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/abc/findallcar")
+        axios.get("https://car-backend-8cxh.onrender.com/abc/findallcar")
             .then(res => {
                 console.log(res.data)
                 setdata1(res.data.data)

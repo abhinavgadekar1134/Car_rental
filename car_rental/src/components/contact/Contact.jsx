@@ -30,7 +30,7 @@ function Contact() {
       suggestion:suggestion
     };
 
-    axios.post("http://localhost:8000/abc/postcontact", setdata)
+    axios.post("https://car-backend-8cxh.onrender.com/abc/postcontact", setdata)
       .then((res) => {
         console.log(res.data);
         window.alert('Form submitted')

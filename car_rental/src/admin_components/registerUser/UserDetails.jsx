@@ -10,7 +10,7 @@ const UserDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/abc/findalluser")
+        axios.get("https://car-backend-8cxh.onrender.com/abc/findalluser")
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)

@@ -12,7 +12,7 @@ const Admin = () => {
   const handleSubmit = () => {
     // navigate('/adminHome');
 
-    axios.get(`http://localhost:8000/abc/adminlogin/${uname}/${upass}`)
+    axios.get(`https://car-backend-8cxh.onrender.com/abc/adminlogin/${uname}/${upass}`)
       .then(res => {
         console.log(res.data.status);
         // setfname(res.data.name);

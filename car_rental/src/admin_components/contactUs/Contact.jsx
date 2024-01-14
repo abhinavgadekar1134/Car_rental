@@ -7,7 +7,7 @@ const Contact = () => {
   const [data1, setdata1] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:8000/abc/findallcontact")
+    axios.get("https://car-backend-8cxh.onrender.com/abc/findallcontact")
       .then(res => {
         console.log(res.data)
         setdata1(res.data.data)

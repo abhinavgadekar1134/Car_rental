@@ -31,7 +31,7 @@ const UserUpdate = (props) => {
             gender: gender,
             address: address
         }
-        axios.put(`http://localhost:8000/abc/update/${emailid}`, updata)
+        axios.put(`https://car-backend-8cxh.onrender.com/abc/update/${emailid}`, updata)
             .then(res => {
                 console.log(res.data)
             })

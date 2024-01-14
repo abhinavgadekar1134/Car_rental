@@ -10,7 +10,7 @@ const BookDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/abc/findallbooking")
+        axios.get("https://car-backend-8cxh.onrender.com/abc/findallbooking")
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)

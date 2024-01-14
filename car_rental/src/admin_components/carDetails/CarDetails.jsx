@@ -32,7 +32,7 @@ const CarDetails = () => {
     const handleDelete = (carname) => {
 
 
-        axios.delete(`https://car-rental-techthunder.netlify.app/abc/deleteCar/${carname}`)
+        axios.delete(`https://car-backend-8cxh.onrender.com/abc/deleteCar/${carname}`)
             .then(res => {
                 console.log(res.data);
                 window.alert('data deleted')
@@ -96,7 +96,8 @@ const CarDetails = () => {
                                             localStorage.setItem("carname", ii.name);
                                         }
 
-                                        } >Update</button><button className='btn btn-danger' onClick={() => handleDelete(ii.name)} >Delete</button></td>
+                                        } >Update</button>
+                                        <button className='btn btn-danger' onClick={() => handleDelete(ii.name)} >Delete</button></td>
                                     </tr>
                                 </>
                             )

@@ -6,7 +6,9 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios'
-const Registration = () => {
+import { useNavigate } from 'react-router-dom';
+const Registration = (event) => {
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [fname, setfname] = useState('');
     const [lname, setlname] = useState('');
@@ -16,12 +18,13 @@ const Registration = () => {
     const [contactno, setcontact] = useState('');
     const [gender, setgender] = useState('');
     const [address, setaddress] = useState('');
-    const handleSubmit = () => {
-        
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         const setdata = {
             fname: fname,
             lname: lname,
-            password:password,
+            password: password,
             dob: dob,
             email: email,
             contactno: contactno,
@@ -33,13 +36,17 @@ const Registration = () => {
             .then(res => {
                 console.log(res.data);
                 window.alert("You are successfully registered");
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);
             })
-            setValidated(true);
+
+            
         
-    }
+        setValidated(true);
+
+    };
 
     return (
         <>
@@ -78,7 +85,7 @@ const Registration = () => {
                                 placeholder="Password"
                                 defaultValue=""
                                 value={password}
-                                style={{padding:"5px",paddingLeft:"12px"}}
+                                style={{ padding: "5px", paddingLeft: "12px" }}
                                 onChange={(e) => setpassword(e.target.value)}
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>

@@ -30,12 +30,13 @@ const Login = () => {
                     localStorage.setItem("validatedUser", "true");
                     localStorage.setItem("validatedUserName", res.data.fname);
                     localStorage.setItem("validatedUserEmail",res.data.email);
+                    window.location.reload();   
                 }
                 else {
                     window.alert("username or password not matched");
                     localStorage.removeItem("validatedUser");
                     localStorage.removeItem("validatedUserName");
-
+                    window.location.reload();
                 }
             }
             )
@@ -45,6 +46,7 @@ const Login = () => {
                 localStorage.removeItem("validatedUserName");
                 localStorage.removeItem("validatedUserEmail");
                 console.log(err);
+                window.location.reload();
             }
             )
     };

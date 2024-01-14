@@ -8,7 +8,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from '../headerr/Header';
 import Footer from '../Footer/Footer';
-
+import { useNavigate } from 'react-router-dom';
 function Contact() {
   const [fname, setfname] = useState("");
   const [lname,setlname] = useState("");
@@ -18,7 +18,7 @@ function Contact() {
   const [contactno,setcontactno] = useState("");
   const [suggestion,setsuggestion] = useState("");
   const [validated, setValidated] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     const setdata = {
       fname:fname,
@@ -37,8 +37,12 @@ function Contact() {
       })
       .catch((e) => {
         console.log(e);
-      });
+      })
 
+
+    event.preventDefault();
+    event.stopPropagation();
+      
     setValidated(true);
   };
   return (
@@ -47,7 +51,8 @@ function Contact() {
 
       <div className='mb-6' style={{ width: "50%", margin: "auto",border:"1px solid black",padding:"20px" }}>
         <h3 style={{textAlign:"center"}}>Contact Us</h3>
-        <Form noValidate validated={validated} onSubmit={handleSubmit} style={{marginTop:"30px"}}>
+        <Form noValidate id='contact' validated={validated} onSubmit={handleSubmit} style={{marginTop:"30px"}}>
+
           <Row className="mb-3">
             <Form.Group as={Col} md="4" controlId="validationCustom01">
               <Form.Label>First name</Form.Label>
@@ -69,7 +74,7 @@ function Contact() {
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="4" controlId="validationCustom02">
+            <Form.Group as={Col} md="4" controlId="validationCustom03">
               <Form.Label>Contact NO </Form.Label>
               <Form.Control
                 required
@@ -97,14 +102,14 @@ function Contact() {
             </Form.Group>
           </Row>
           <Row className="mb-3">
-            <Form.Group as={Col} md="6" controlId="validationCustom03">
+            <Form.Group as={Col} md="6" controlId="validationCustom04">
               <Form.Label>City</Form.Label>
               <Form.Control type="text" placeholder="City" onChange={(e) => setcity(e.target.value)} required />
               <Form.Control.Feedback type="invalid">
                 Please provide a valid city.
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md="3" controlId="validationCustom04">
+            <Form.Group as={Col} md="3" controlId="validationCustom05">
               <Form.Label>State</Form.Label>
               <Form.Control type="text" placeholder="State" onChange={(e) => setstate(e.target.value)} required />
               <Form.Control.Feedback type="invalid">
@@ -115,7 +120,7 @@ function Contact() {
             
             
           </Row>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+          <Form.Group as={Col} md="3" controlId="validationCustom06">
               <Form.Label>Suggestion</Form.Label>
               <Form.Control placeholder="Suggestion" as="textarea" onChange={(e) => setsuggestion(e.target.value)} required />
               <Form.Control.Feedback type="invalid">
@@ -131,9 +136,9 @@ function Contact() {
             />
           </Form.Group>
 
-          <Button type="submit">Submit form</Button>
+          <Button type="submit" onClick={handleSubmit}>Submit form</Button>
         </Form>
-      </div>
+        </div>
       <Footer/>
     </>
   );

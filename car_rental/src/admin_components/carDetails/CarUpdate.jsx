@@ -19,7 +19,7 @@ const CarUpdate = () => {
     const [fuel, setfuel] = useState('');
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
-
+    const [desc, setdesc] = useState('');
     useEffect(() => {
          axios.get(`http://localhost:8000/abc/findcar/${carrnamee}`)
             .then(res => {
@@ -32,6 +32,7 @@ const CarUpdate = () => {
                 setfuel(res.data.data.fuel);
                 setprice(res.data.data.price);
                 setnoSeats(res.data.data.noSeats);
+                setdesc(res.data.data.desc);
             }
             )
             .catch(err => {
@@ -48,7 +49,8 @@ const CarUpdate = () => {
             rent:rent,
             fuel:fuel,
             price:price,
-            noSeats:noSeats
+            noSeats:noSeats,
+            desc: desc,
         }
         axios.put(`http://localhost:8000/abc/updateCar/${carrnamee}`, updata)
             .then(res => {
@@ -139,6 +141,13 @@ const CarUpdate = () => {
                                     value={noSeats}
                                     onChange={(e) => { setnoSeats(e.target.value) }}
                                 />
+                            </Col>
+                            <Col lg={6}>
+                                
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e)=>{setdesc(e.target.value)}}></textarea>
+                                </div>
                             </Col>
                         </Row>
 

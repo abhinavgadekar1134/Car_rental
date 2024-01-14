@@ -17,7 +17,7 @@ const route = require('./route')
 app.use('/abc',route)
 
 app.get(('/'), (req, res) => {
-    res.send("running at localhost:8000")
+    res.send("running at:8000")
 })
 
 app.listen(8000, () => console.log("running at localhost:8000"))

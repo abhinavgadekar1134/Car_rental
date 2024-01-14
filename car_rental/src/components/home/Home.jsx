@@ -23,6 +23,7 @@ import Header from '../headerr/Header';
 import { FaBolt, FaCarSide, FaCity, FaPlaneDeparture, FaCheckDouble } from 'react-icons/fa';
 import Carousel from 'react-bootstrap/Carousel';
 const Home = () => {
+  
   return (
     <>
       <Header />

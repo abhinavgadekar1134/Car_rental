@@ -19,9 +19,10 @@ const CarUpdate = () => {
     const [fuel, setfuel] = useState('');
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
+    const [desc, setdesc] = useState('');
 
     useEffect(() => {
-         axios.get(`https://car-backend-8cxh.onrender.com/abc/findcar/${carrnamee}`)
+        axios.get(`https://car-backend-8cxh.onrender.com/abc/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -32,6 +33,7 @@ const CarUpdate = () => {
                 setfuel(res.data.data.fuel);
                 setprice(res.data.data.price);
                 setnoSeats(res.data.data.noSeats);
+                setdesc(res.data.data.desc);
             }
             )
             .catch(err => {
@@ -42,13 +44,14 @@ const CarUpdate = () => {
 
     const handleSubmit = (event) => {
         const updata = {
-            model:model,
-            cartype:cartype,
-            carmodel:carmodel,
-            rent:rent,
-            fuel:fuel,
-            price:price,
-            noSeats:noSeats
+            name: name,
+            model: model,
+            cartype: cartype,
+            rent: rent,
+            fuel: fuel,
+            price: price,
+            noSeats: noSeats,
+            desc: desc,
         }
         axios.put(`http://localhost:8000/abc/updateCar/${carrnamee}`, updata)
             .then(res => {
@@ -66,93 +69,95 @@ const CarUpdate = () => {
         <>
             <Header />
 
-            <Form noValidate validated={validated} onSubmit={()=>handleSubmit()}>
-                    <Container>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Container>
 
-                        <Row>
-                            <Col lg={6}>
-                                <Form.Label>Carname</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Enter carname"
-                                    value={name}
-                                    onChange={(e) => { setname(e.target.value) }}
-                                />
-                            </Col>
-                            <Col lg={6}>
-                                <Form.Label>Model</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Enter Model"
-                                    value={model}
-                                    onChange={(e) => { setmodel(e.target.value) }}
-                                />
-                            </Col>
-                            <Col lg={6}>
-                                <Form.Label>car type</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Enter CarType"
-                                    value={cartype}
-                                    onChange={(e) => { setcartype(e.target.value) }}
-                                />
-                            </Col>
-                            <Col lg={6}>
-                                <Form.Label>Rent</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="Number"
-                                    placeholder="Enter Rent"
-                                    value={rent}
-                                    onChange={(e) => { setrent(e.target.value) }}
-                                />
-                            </Col>
-                            <Col lg={6}>
-                                <Form.Label>Fuel</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Enter Fuel"
-                                    value={fuel}
-                                    onChange={(e) => { setfuel(e.target.value) }}
-                                />
-                            </Col>
-                            <Col lg={6}>
-                                <Form.Label>Price</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="number"
-                                    placeholder="Enter Price"
-                                    value={price}
-                                    onChange={(e) => { setprice(e.target.value) }}
-                                />
-                            </Col>
-                            <Col lg={6}>
-                                <Form.Label>No Of seat</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="EnterNO of seat"
-                                    value={noSeats}
-                                    onChange={(e) => { setnoSeats(e.target.value) }}
-                                />
-                            </Col>
-                        </Row>
+                    <Row>
+                        <Col lg={6}>
+                            <Form.Label>Carname</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Enter carname"
+                                onChange={(e) => { setname(e.target.value) }}
+                            />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Label>Model</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Enter Model"
+                                onChange={(e) => { setmodel(e.target.value) }}
+                            />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Label>car type</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Enter CarType"
+                                onChange={(e) => { setcartype(e.target.value) }}
+                            />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Label>Rent</Form.Label>
+                            <Form.Control
+                                required
+                                type="Number"
+                                placeholder="Enter Rent"
+                                onChange={(e) => { setrent(e.target.value) }}
+                            />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Label>Fuel</Form.Label>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder="Enter Fuel"
+                                onChange={(e) => { setfuel(e.target.value) }}
+                            />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Label>Price</Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="Enter Price"
+                                onChange={(e) => { setprice(e.target.value) }}
+                            />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Label>No Of seat</Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                placeholder="EnterNO of seat"
 
-                    </Container>
-                    <Form.Group className="mb-3">
-                        <Form.Check style={{ marginLeft: "70px" }}
-                            required
-                            label="Agree to terms and conditions"
-                            feedback="You must agree before submitting."
-                            feedbackType="invalid"
-                        />
-                    </Form.Group>
-                    <Button type="submit" style={{ marginLeft: "50px" }}>Update</Button>
-                </Form>
+                                onChange={(e) => { setnoSeats(e.target.value) }}
+                            />
+
+                        </Col>
+                        <Col lg={6}>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => { setdesc(e.target.value) }}></textarea>
+                            </div>
+                        </Col>
+                    </Row>
+
+                </Container>
+                <Form.Group className="mb-3">
+                    <Form.Check style={{ marginLeft: "70px" }}
+                        required
+                        label="Agree to terms and conditions"
+                        feedback="You must agree before submitting."
+                        feedbackType="invalid"
+                    />
+                </Form.Group>
+                <Button type="submit" style={{ marginLeft: "50px" }}>Add</Button>
+            </Form>
         </>
 
     )

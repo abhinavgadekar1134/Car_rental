@@ -1,18 +1,20 @@
 const modal = require('./modal')
 const mongoose = require('mongoose')
+const nodemailer = require("nodemailer");
+
 mongoose.pluralize(null);
 const custmodal = mongoose.model('registeredcustomers', modal.userSchema)
 const carmodal = mongoose.model('car', modal.carSchema)
-const contactmodal = mongoose.model('contact',modal.contactSchema)
-const bookingmodal = mongoose.model('bookings',modal.bookingSchema)
-const adminModal = mongoose.model('admin',modal.adminSchema)
+const contactmodal = mongoose.model('contact', modal.contactSchema)
+const bookingmodal = mongoose.model('bookings', modal.bookingSchema)
+const adminModal = mongoose.model('admin', modal.adminSchema)
 // ------------------------------------ Customers ---------------------------------------------------
 const addcust = async (req, res) => {
-    const { fname, lname,password, dob, email, contactno, gender, address } = req.body;
+    const { fname, lname, password, dob, email, contactno, gender, address } = req.body;
 
     try {
         const custdata = new custmodal({
-            fname, lname,password, dob, email, contactno, gender, address
+            fname, lname, password, dob, email, contactno, gender, address
         })
         const data = await custdata.save();
 
@@ -29,7 +31,7 @@ const getdata = async (req, res) => {
     const userdata = await custmodal.find();
 
     try {
-        res.status(200).send({ data:userdata,msg:"success" })
+        res.status(200).send({ data: userdata, msg: "success" })
     } catch (error) {
         console.log(error);
         res.status(400).send({ error });
@@ -42,11 +44,11 @@ const getdata = async (req, res) => {
 const updateuser = async (req, res) => {
     try {
         const { email } = req.params
-        const { fname, lname,password, dob, contactno, gender, address } = req.body
+        const { fname, lname, password, dob, contactno, gender, address } = req.body
         const data = await custmodal.updateOne(
             { email },
             {
-                $set: { fname, lname,password, dob, contactno, gender, address }
+                $set: { fname, lname, password, dob, contactno, gender, address }
             }
         )
         if (data.modifiedCount > 0) {
@@ -67,14 +69,13 @@ const deleteuser = async (req, res) => {
 
     try {
         const { email } = req.params
-        const data = await custmodal.deleteOne({email})
+        const data = await custmodal.deleteOne({ email })
 
-        if(data.deletedCount > 0)
-        {
-            res.status(200).send({msg:"Data deleted"})
+        if (data.deletedCount > 0) {
+            res.status(200).send({ msg: "Data deleted" })
         }
-        else{
-            res.status(200).send({msg:"Data not deleted"})
+        else {
+            res.status(200).send({ msg: "Data not deleted" })
 
         }
 
@@ -84,10 +85,10 @@ const deleteuser = async (req, res) => {
     }
 }
 
-const findElementbyid = async(req,res)=>{
+const findElementbyid = async (req, res) => {
     try {
-        const {email} = req.params
-        const userdata = await custmodal.findOne({email})
+        const { email } = req.params
+        const userdata = await custmodal.findOne({ email })
         res.status(200).send(userdata)
     } catch (error) {
         console.log(error);
@@ -100,11 +101,11 @@ const findElementbyid = async(req,res)=>{
 // ------------------------------ Cars ---------------------------------
 const addcar = async (req, res) => {
 
-    const { name, model, cartype , rent, fuel, price, noSeats,desc  } = req.body;
+    const { name, model, cartype, rent, fuel, price, noSeats, desc } = req.body;
 
     try {
         const cardata = new carmodal({
-            name, model, cartype, rent, fuel, price, noSeats,desc 
+            name, model, cartype, rent, fuel, price, noSeats, desc
         })
         const data = await cardata.save();
 
@@ -118,11 +119,11 @@ const addcar = async (req, res) => {
 const updatecar = async (req, res) => {
     try {
         const { name } = req.params
-        const { model,    cartype,        rent,    fuel, price,noSeats,desc } = req.body
+        const { model, cartype, rent, fuel, price, noSeats, desc } = req.body
         const cdata = await carmodal.updateOne(
             { name },
             {
-                $set: { model,    cartype,        rent,    fuel, price,noSeats,desc }
+                $set: { model, cartype, rent, fuel, price, noSeats, desc }
             }
         )
         if (cdata.modifiedCount > 0) {
@@ -143,17 +144,17 @@ const getcardata = async (req, res) => {
     const cardata = await carmodal.find();
 
     try {
-        res.status(200).send({ data:cardata,msg:"success" })
+        res.status(200).send({ data: cardata, msg: "success" })
     } catch (error) {
         console.log(error);
         res.status(400).send({ error });
     }
 }
-const findCarbyid = async(req,res)=>{
+const findCarbyid = async (req, res) => {
     try {
-        const {name} = req.params
-        const data = await carmodal.findOne({name})
-        res.status(200).send({msg:"success",data})
+        const { name } = req.params
+        const data = await carmodal.findOne({ name })
+        res.status(200).send({ msg: "success", data })
     } catch (error) {
         console.log(error);
         res.status(400).send("Not found")
@@ -164,14 +165,13 @@ const deleteCar = async (req, res) => {
 
     try {
         const { name } = req.params
-        const data = await carmodal.deleteOne({name})
+        const data = await carmodal.deleteOne({ name })
 
-        if(data.deletedCount > 0)
-        {
-            res.status(200).send({msg:"Data deleted"})
+        if (data.deletedCount > 0) {
+            res.status(200).send({ msg: "Data deleted" })
         }
-        else{
-            res.status(200).send({msg:"Data not deleted"})
+        else {
+            res.status(200).send({ msg: "Data not deleted" })
 
         }
 
@@ -183,35 +183,60 @@ const deleteCar = async (req, res) => {
 
 // --------------- User Contact ------------------
 
-const addusercontact=async(req,res)=>{
-    
-    const{fname,lname,email,city,state,contactno,suggestion}=req.body
-    try{
-        const abdata=new contactmodal({
-            fname,lname,email,city,state,contactno,suggestion
+const addusercontact = async (req, res) => {
+
+    const { fname, lname, email, city, state, contactno, suggestion } = req.body
+    try {
+        const abdata = new contactmodal({
+            fname, lname, email, city, state, contactno, suggestion
         })
-        const data=await abdata.save()
-        
-        res.status(200).send({data})
+        const data = await abdata.save()
+
+        res.status(200).send({ data })
     }
-    catch(err)
-    {
+    catch (err) {
         console.log(err)
-        res.status(400).send({err})
+        res.status(400).send({ err })
     }
+    
+    let dotenv = require('dotenv').config()
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false, // use SSL
+        auth: {
+            user: dotenv.parsed.REACT_APP_MAIL_U,
+            pass: dotenv.parsed.REACT_APP_MAIL_P,
+        }
+    });
+
+    const info = await transporter.sendMail({
+        from: "Car Rental App",
+        to: "abhinavgadekar13@gmail.com", // list of receivers
+        subject: "Contact for car rental app", // Subject line
+        html: `
+        <h4>Name:       <span style="font-weight: 100; color: rgb(0, 13, 255);">    ${fname, lname}     </span></h4>
+        <h4>Email:      <span style="font-weight: 100; color: rgb(255, 0, 0);">     ${email}     </span></h4>
+        <h4>suggestion: <span style="font-weight: 100; color: rgb(0, 0, 0);">   ${suggestion}</span></h4>  
+        <h4>City:       <span style="font-weight: 100; color: rgb(3, 3, 3);">   ${city}      </span></h4>
+        <h4>State:      <span style="font-weight: 100; color: rgb(31, 4, 4);">  ${state}     </span></h4>
+        <h4>Contact no: <span style="font-weight: 100; color: rgb(0, 0, 0);">   ${contactno} </span></h4>
+    
+        `// html body
+    });
+    // console.log(info)
 }
 const deleteCont = async (req, res) => {
 
     try {
         const { email } = req.params
-        const data = await contactmodal.deleteOne({email})
+        const data = await contactmodal.deleteOne({ email })
 
-        if(data.deletedCount > 0)
-        {
-            res.status(200).send({msg:"Data deleted"})
+        if (data.deletedCount > 0) {
+            res.status(200).send({ msg: "Data deleted" })
         }
-        else{
-            res.status(200).send({msg:"Data not deleted"})
+        else {
+            res.status(200).send({ msg: "Data not deleted" })
 
         }
 
@@ -224,11 +249,11 @@ const getContactData = async (req, res) => {
     const contdata = await contactmodal.find();
 
     try {
-        res.status(200).send({ data:contdata,msg:"success" });
+        res.status(200).send({ data: contdata, msg: "success" });
         // console.log(contdata);
     } catch (error) {
         console.log(error);
-        res.status(400).send({ data:"cant fetch", error });
+        res.status(400).send({ data: "cant fetch", error });
     }
 }
 
@@ -238,11 +263,11 @@ const getContactData = async (req, res) => {
 
 // ------------------- Booking ----------------------------
 const addBooking = async (req, res) => {
-    const { username,usermail, carname, payment,contactno,hours,driver,date,curdate } = req.body;
+    const { username, usermail, carname, payment, contactno, hours, driver, date, curdate } = req.body;
 
     try {
         const bookdata = new bookingmodal({
-            username,usermail, carname, payment,contactno,hours,driver,date,curdate
+            username, usermail, carname, payment, contactno, hours, driver, date, curdate
         })
         const data = await bookdata.save();
 
@@ -259,7 +284,7 @@ const getBookingData = async (req, res) => {
     const userdata = await bookingmodal.find();
 
     try {
-        res.status(200).send({ data:userdata,msg:"success" })
+        res.status(200).send({ data: userdata, msg: "success" })
     } catch (error) {
         console.log(error);
         res.status(400).send({ error });
@@ -272,11 +297,11 @@ const getBookingData = async (req, res) => {
 const updateBooking = async (req, res) => {
     try {
         const { usermail } = req.params
-        const { username, carname, payment, contactno,hours,driver,date } = req.body
+        const { username, carname, payment, contactno, hours, driver, date } = req.body
         const data = await bookingmodal.updateOne(
             { usermail },
             {
-                $set: {username,carname, payment, contactno,hours,driver,date }
+                $set: { username, carname, payment, contactno, hours, driver, date }
             }
         )
         if (data.modifiedCount > 0) {
@@ -297,14 +322,13 @@ const deleteBooking = async (req, res) => {
 
     try {
         const { email } = req.params
-        const data = await bookingmodal.deleteOne({email})
+        const data = await bookingmodal.deleteOne({ email })
 
-        if(data.deletedCount > 0)
-        {
-            res.status(200).send({msg:"Data deleted"})
+        if (data.deletedCount > 0) {
+            res.status(200).send({ msg: "Data deleted" })
         }
-        else{
-            res.status(200).send({msg:"Data not deleted"})
+        else {
+            res.status(200).send({ msg: "Data not deleted" })
 
         }
 
@@ -314,11 +338,11 @@ const deleteBooking = async (req, res) => {
     }
 }
 
-const findBookingbyid = async(req,res)=>{
+const findBookingbyid = async (req, res) => {
     try {
-        const {usermail} = req.params
-        const userdata = await bookingmodal.findOne({usermail})
-        res.status(200).send({ data:userdata,msg:"success" })
+        const { usermail } = req.params
+        const userdata = await bookingmodal.findOne({ usermail })
+        res.status(200).send({ data: userdata, msg: "success" })
     } catch (error) {
         console.log(error);
         res.status(400).send("Not found")
@@ -327,18 +351,16 @@ const findBookingbyid = async(req,res)=>{
 }
 
 // -------------------- login --------------------------
-const loginuser = async(req,res)=>{
+const loginuser = async (req, res) => {
     try {
-        const {email} = req.params
-        const {password} = req.params
+        const { email } = req.params
+        const { password } = req.params
 
-        const userdata = await custmodal.findOne({email})
-        if(userdata.password == password)
-        {
-            res.status(200).send({status:"success",fname:userdata.fname,email:userdata.email});
+        const userdata = await custmodal.findOne({ email })
+        if (userdata.password == password) {
+            res.status(200).send({ status: "success", fname: userdata.fname, email: userdata.email });
         }
-        else
-        {
+        else {
             res.status(400).send('fail');
         }
         // res.status(200).send(userdata)
@@ -350,18 +372,16 @@ const loginuser = async(req,res)=>{
 }
 
 // ----------Admin login
-const adminlogin = async(req,res)=>{
+const adminlogin = async (req, res) => {
     try {
-        const {mail} = req.params
-        const {password} = req.params
+        const { mail } = req.params
+        const { password } = req.params
 
-        const userdata = await adminModal.findOne({mail})
-        if(userdata.password == password)
-        {
-            res.status(200).send({status:"success",mail:userdata.mail,password:userdata.password});
+        const userdata = await adminModal.findOne({ mail })
+        if (userdata.password == password) {
+            res.status(200).send({ status: "success", mail: userdata.mail, password: userdata.password });
         }
-        else
-        {
+        else {
             res.status(400).send('fail');
         }
         // res.status(200).send(userdata)
@@ -372,11 +392,12 @@ const adminlogin = async(req,res)=>{
 
 }
 
-module.exports = { 
-    addcust, getdata, updateuser,deleteuser,findElementbyid,
-    addcar,getcardata ,findCarbyid,updatecar,deleteCar,
-    addusercontact,deleteCont,getContactData,
-    addBooking,getBookingData,updateBooking,deleteBooking,findBookingbyid,
-    loginuser,adminlogin
+
+module.exports = {
+    addcust, getdata, updateuser, deleteuser, findElementbyid,
+    addcar, getcardata, findCarbyid, updatecar, deleteCar,
+    addusercontact, deleteCont, getContactData,
+    addBooking, getBookingData, updateBooking, deleteBooking, findBookingbyid,
+    loginuser, adminlogin
 }
 

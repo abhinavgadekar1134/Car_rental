@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import './Admin.css'
 import { Button, Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 const Admin = () => {
-  
+
+  const navigate = useNavigate();
   const [uname, setuname] = useState('');
   const [upass, setupass] = useState('');
-  const handleSubmit = () => {
-    // navigate('/adminHome');
+  const handleSubmit = (event) => {
 
+    event.preventDefault();
+    event.stopPropagation();
     axios.get(`${process.env.REACT_APP_BACKEND_LINK}/adminlogin/${uname}/${upass}`)
       .then(res => {
         console.log(res.data.status);
@@ -16,18 +19,20 @@ const Admin = () => {
         if (res.data.status === "success") {
           window.alert("Login successfull");
           // navigate('/adminHome');
-          localStorage.setItem('adminname',res.data.mail);
-          window.location.replace("http://localhost:3000/adminHome");
+          localStorage.setItem('adminname', res.data.mail);
+          navigate('/adminHome');
 
         }
         else {
           window.alert("username or password not matched");
+          navigate('/Admin');
         }
       }
       )
       .catch(err => {
         window.alert("username or password not matcheddddddd");
         console.log(err);
+        navigate('/Admin');
       }
       )
   }
@@ -38,22 +43,11 @@ const Admin = () => {
         <div class="login-container">
           <div class="login-form">
             <h2>Login</h2>
-            {/* <form onSubmit={handleSubmit}>
-              <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" onChange={(e) => { setuname(e.target.value) }} required />
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" onChange={(e) => { setupass(e.target.value) }} required />
-              </div>
-              <button type="submit">Login</button>
-            </form> */}
-
+            
             <Form onSubmit={handleSubmit} >
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="text" placeholder="Enter email" onChange={(e) => { setuname(e.target.value) }}/>
+                <Form.Control type="text" placeholder="Enter email" onChange={(e) => { setuname(e.target.value) }} />
                 <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                 </Form.Text>

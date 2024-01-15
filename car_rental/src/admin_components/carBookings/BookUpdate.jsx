@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import pic1 from '../Images/1.jpeg';
 import './Bookc.css'
-import { Form,InputGroup } from 'react-bootstrap';
+import { Form, InputGroup } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 const BookUpdate = () => {
     const carrnamee = localStorage.getItem("carname");
     const useremail = localStorage.getItem("useremail");
@@ -18,11 +19,11 @@ const BookUpdate = () => {
     const [fuel, setfuel] = useState('');
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
-    
-    const [usermail,setusermail] = useState('');
-    const [username ,setusername ] = useState('');
-    const [payment ,setpayment ] = useState('500');
 
+    const [usermail, setusermail] = useState('');
+    const [username, setusername] = useState('');
+    const [payment, setpayment] = useState('500');
+    const navigate = useNavigate();
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
@@ -41,40 +42,43 @@ const BookUpdate = () => {
             }
             )
 
-            axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findbooking/${useremail}`).then(res => {
-             
-              console.log(res.data);
-              setusermail(res.data.data.usermail);
-              setusername(res.data.data.username); 
-              setpayment(res.data.data.payment);
-              
-          }
-          )
-          .catch(err => {
-              console.log(err);
-          }
-          )
-    }, [useremail,carrnamee]);
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findbooking/${useremail}`).then(res => {
 
-    
+            console.log(res.data);
+            setusermail(res.data.data.usermail);
+            setusername(res.data.data.username);
+            setpayment(res.data.data.payment);
+
+        }
+        )
+            .catch(err => {
+                console.log(err);
+            }
+            )
+    }, [useremail, carrnamee]);
+
+
 
     const handleSubmit = () => {
 
         const setdata = {
 
-            usermail:usermail,
-            carname:name,
-            username:username,
-            payment:payment
+            usermail: usermail,
+            carname: name,
+            username: username,
+            payment: payment
         }
 
         axios.put(`${process.env.REACT_APP_BACKEND_LINK}/updatebooking/${usermail}`, setdata)
             .then(res => {
                 console.log(res.data);
+                window.alert("Date updated");
             })
             .catch((err) => {
                 console.log(err);
             })
+
+        navigate('/BookDetails');
         setValidated(true);
 
     }
@@ -101,14 +105,14 @@ const BookUpdate = () => {
                                     <tr>
                                         <td>Car Name: </td>
                                         <td>
-                                          <input type="text" className='form-control' value={name} onChange={(e)=>setname(e.target.value)} />
-                                        
+                                            <input type="text" className='form-control' value={name} onChange={(e) => setname(e.target.value)} />
+
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Model: </td>
                                         <td>
-                                          <input type="text" className='form-control' value={model} onChange={(e)=>setmodel(e.target.value)} />
+                                            <input type="text" className='form-control' value={model} onChange={(e) => setmodel(e.target.value)} />
                                         </td>
                                     </tr>
                                     <tr>
@@ -134,7 +138,7 @@ const BookUpdate = () => {
 
                                 </table>
                             </div>
-                            <div style={{margin:"40px"}}>
+                            <div style={{ margin: "40px" }}>
                                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                                     <Row className="mb-3">
                                         <Form.Group as={Col} md="6" controlId="validationCustom01">
@@ -144,11 +148,11 @@ const BookUpdate = () => {
                                                 type="text"
                                                 placeholder="First name"
                                                 value={username}
-                                                onChange={(e)=>setusername(e.target.value)}
+                                                onChange={(e) => setusername(e.target.value)}
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
-                                        
+
                                         <Form.Group as={Col} md="6" controlId="validationCustomUsername">
                                             <Form.Label>Email</Form.Label>
                                             <InputGroup hasValidation>
@@ -158,7 +162,7 @@ const BookUpdate = () => {
                                                     placeholder="Email"
                                                     aria-describedby="inputGroupPrepend"
                                                     value={usermail}
-                                                    onChange={(e)=>setusermail(e.target.value)}
+                                                    onChange={(e) => setusermail(e.target.value)}
                                                     required
                                                 />
                                                 <Form.Control.Feedback type="invalid">
@@ -168,17 +172,17 @@ const BookUpdate = () => {
                                         </Form.Group>
                                     </Row>
                                     <Row className="mb-3">
-                                
+
                                         <Form.Group as={Col} md="6" controlId="validationCustom04">
                                             <Form.Label>Contact No</Form.Label>
-                                            <Form.Control type="text" placeholder="Contact No"  value={""} required />
+                                            <Form.Control type="text" placeholder="Contact No" value={""} required />
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide a valid contact.
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group as={Col} md="6" controlId="validationCustom05">
                                             <Form.Label>Payment</Form.Label>
-                                            <Form.Control type="number" min={500} style={{style:"none !important" }} value={payment} onChange={(e)=>setpayment(e.target.value)} defaultValue="500" placeholder="Payment" required />
+                                            <Form.Control type="number" min={500} style={{ style: "none !important" }} value={payment} onChange={(e) => setpayment(e.target.value)} defaultValue="500" placeholder="Payment" required />
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide a valid payment.
                                             </Form.Control.Feedback>

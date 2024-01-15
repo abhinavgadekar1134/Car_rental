@@ -7,10 +7,12 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 const CarUpdate = () => {
     const carrnamee = localStorage.getItem("carname");
     const [validated, setValidated] = useState(false);
-
+    
+    const navigate = useNavigate();
     const [name, setname] = useState('');
     const [model, setmodel] = useState('');
     const [cartype, setcartype] = useState('');
@@ -55,12 +57,13 @@ const CarUpdate = () => {
         axios.put(`${process.env.REACT_APP_BACKEND_LINK}/updateCar/${carrnamee}`, updata)
             .then(res => {
                 console.log(res.data);
+                window.alert("Data updated");
             })
             .catch((err) => {
                 console.log(err);
             });
 
-
+        navigate('/adminHome');
         setValidated(true);
     }
 

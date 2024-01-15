@@ -7,7 +7,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 import Header from '../headerr/Header';
 import pic1 from '../Images/1.jpeg';
 import Footer from '../Footer/Footer';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Bookc = () => {
     const carrnamee = localStorage.getItem("carname");
     const [validated, setValidated] = useState(false);
@@ -21,7 +21,7 @@ const Bookc = () => {
             window.alert("Please login for Booking ");
             navigate('/Home');
         }
-    },[val,navigate])
+    }, [val, navigate])
 
 
 
@@ -34,7 +34,7 @@ const Bookc = () => {
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
-    
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
@@ -57,24 +57,26 @@ const Bookc = () => {
 
     const [usermail, setusermail] = useState(localStorage.getItem('validatedUserName'));
     const [username, setusername] = useState(localStorage.getItem('validatedUserEmail'));
-    const [payment, setpayment] = useState(4*rent);
-    const [driver,setdriver] = useState('with_driver');
+    const [payment, setpayment] = useState(4 * rent);
+    const [driver, setdriver] = useState('with_driver');
     const [hours, sethours] = useState('4');
     const [date, setdate] = useState('');
-    const [contactno,setcontactno] = useState('');
-    const handleSubmit = () => {
-        setpayment(hours*rent);
+    const [contactno, setcontactno] = useState('');
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setpayment(hours * rent);
         const setdata = {
 
             usermail: usermail,
             carname: name,
             username: username,
             payment: payment,
-            contactno:contactno,
-            hours:hours,
-            driver:driver,
-            date:date,
-            curdate:new Date().getTime()
+            contactno: contactno,
+            hours: hours,
+            driver: driver,
+            date: date,
+            curdate: new Date().getTime()
         }
 
         axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postbooking`, setdata)
@@ -86,7 +88,6 @@ const Bookc = () => {
                 console.log(err);
             })
         setValidated(true);
-
     }
     return (
         <>
@@ -178,26 +179,26 @@ const Bookc = () => {
 
                                         <Form.Group as={Col} md="6" controlId="validationCustom04">
                                             <Form.Label>Contact No</Form.Label>
-                                            <Form.Control type="text" placeholder="Contact No" onChange={(e)=>setcontactno(e.target.value)} required />
+                                            <Form.Control type="text" placeholder="Contact No" onChange={(e) => setcontactno(e.target.value)} required />
                                             <Form.Control.Feedback type="invalid">
                                                 Please provide a valid contact.
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group as={Col} md="6" controlId="validationCustom05">
                                             <Form.Label>Hours</Form.Label>
-                                            <Form.Control type="number" max={168} min={4} defaultValue="4"  style={{ style: "none !important" }} onChange={(e) => {sethours(e.target.value);setpayment(e.target.value * rent)}} placeholder="Enter hours you want" required />
+                                            <Form.Control type="number" max={168} min={4} defaultValue="4" style={{ style: "none !important" }} onChange={(e) => { sethours(e.target.value); setpayment(e.target.value * rent) }} placeholder="Enter hours you want" required />
                                             <Form.Control.Feedback type="invalid">
                                                 Please Enter hours you wanted minimum 4 and maximum 168.
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group as={Col} md="6" controlId="validationCustom05">
-                                            <br /><Form.Label>Driving:</Form.Label><br/>
-                                            <input type="radio" name="gender" value="male" onChange={(e)=>setdriver('with_driver')} checked /> With Driver&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input type="radio" name="gender" value="female" onChange={(e)=>setdriver('without_driver')} /> Without Driver
+                                            <br /><Form.Label>Driving:</Form.Label><br />
+                                            <input type="radio" name="gender" value="male" onChange={(e) => setdriver('with_driver')} checked /> With Driver&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="gender" value="female" onChange={(e) => setdriver('without_driver')} /> Without Driver
                                         </Form.Group>
                                         <Form.Group as={Col} md="6" controlId="validationCustom05">
                                             <br /><Form.Label>Booking Date:</Form.Label>
-                                            <Form.Control type="date" onChange={(e) => {setdate(e.target.value)}} placeholder="Enter date of booking you want" required />
+                                            <Form.Control type="date" onChange={(e) => { setdate(e.target.value) }} placeholder="Enter date of booking you want" required />
                                             <Form.Control.Feedback type="invalid">
                                                 Please Enter booking date you wanted.
                                             </Form.Control.Feedback>

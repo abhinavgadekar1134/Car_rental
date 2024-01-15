@@ -7,18 +7,21 @@ import Col from 'react-bootstrap/Col';
 import avator from '../Images/avator.png'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
     const [validated, setValidated] = useState(false);
     const [loginusername, setloginusername] = useState('');
     const [loginpassword, setloginpassword] = useState('');
-
+    const navigate = useNavigate();
+    const handleadmin = (event)=>{
+        navigate('/Admin');
+    }
     const handleSubmit2 = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        
+        event.preventDefault();
+        event.stopPropagation();
+        
         setValidated(true);
 
         axios.get(`${process.env.REACT_APP_BACKEND_LINK}/login/${loginusername}/${loginpassword}`)
@@ -30,13 +33,13 @@ const Login = () => {
                     localStorage.setItem("validatedUser", "true");
                     localStorage.setItem("validatedUserName", res.data.fname);
                     localStorage.setItem("validatedUserEmail",res.data.email);
-                    window.location.reload();   
+                    navigate('/')
                 }
                 else {
                     window.alert("username or password not matched");
                     localStorage.removeItem("validatedUser");
                     localStorage.removeItem("validatedUserName");
-                    window.location.reload();
+                    navigate('/')
                 }
             }
             )
@@ -46,7 +49,7 @@ const Login = () => {
                 localStorage.removeItem("validatedUserName");
                 localStorage.removeItem("validatedUserEmail");
                 console.log(err);
-                window.location.reload();
+                navigate('/')
             }
             )
     };
@@ -101,9 +104,10 @@ const Login = () => {
                         feedbackType="invalid"
                     />
                 </Form.Group>
+                
                 <Button type="submit" className='col-md-12 btn-success' >Login</Button>
             </Form>
-
+            <Button style={{background:"none",color:"black",border:"none"}} onClick={handleadmin}>Log in as admin</Button>
         </>
     )
 }

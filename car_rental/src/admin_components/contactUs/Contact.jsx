@@ -57,7 +57,7 @@ const Contact = () => {
                 <>
                   <tr>
                     {/* <th scope="row">1</th> */}
-                    <td>{ii.fname}{ii.lname}</td>
+                    <td>{ii.fname}&nbsp;{ii.lname}</td>
                     <td>{ii.email}</td>
                     <td>{ii.city}</td>
                     <td>{ii.state}</td>

@@ -17,7 +17,7 @@ const CarDetails = () => {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/abc/findallcar`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallcar`)
             .then(res => {
                 console.log(res.data)
                 setdata1(res.data.data)

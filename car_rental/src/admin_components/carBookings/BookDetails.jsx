@@ -10,7 +10,7 @@ const BookDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/abc/findallbooking`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallbooking`)
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)

@@ -17,7 +17,7 @@ const Contact = () => {
         console.log(err)
       }
       )
-  }, [])
+  }, [data1])
 
   const handleDelete = (email) => {
 
@@ -37,6 +37,7 @@ const Contact = () => {
     <>
     <Header/>
       <h3 style={{ marginTop: "20px" }} className='text-center'>Contact Us </h3>
+      <div style={{width:"100%",overflowX:"scroll"}}>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -80,6 +81,7 @@ const Contact = () => {
           }
         </tbody>
       </Table>
+      </div>
     </>
   )
 }

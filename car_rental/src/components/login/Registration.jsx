@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 const Registration = (event) => {
     const [validated, setValidated] = useState(false);
     const [fname, setfname] = useState('');
@@ -16,6 +17,7 @@ const Registration = (event) => {
     const [contactno, setcontact] = useState('');
     const [gender, setgender] = useState('');
     const [address, setaddress] = useState('');
+    const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -34,7 +36,7 @@ const Registration = (event) => {
             .then(res => {
                 console.log(res.data);
                 window.alert("You are successfully registered");
-                window.location.reload();
+                navigate('/CarsPage');
             })
             .catch((err) => {
                 console.log(err);

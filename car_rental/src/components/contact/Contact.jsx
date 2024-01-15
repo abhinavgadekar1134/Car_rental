@@ -8,6 +8,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from '../headerr/Header';
 import Footer from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 function Contact() {
   const [fname, setfname] = useState("");
   const [lname,setlname] = useState("");
@@ -17,6 +18,7 @@ function Contact() {
   const [contactno,setcontactno] = useState("");
   const [suggestion,setsuggestion] = useState("");
   const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     const setdata = {
       fname:fname,
@@ -32,16 +34,16 @@ function Contact() {
     axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postcontact`, setdata)
       .then((res) => {
         console.log(res.data);
-        window.alert('Form submitted')
+        window.alert('Form submitted');
+        navigate('/Home');
       })
       .catch((e) => {
         console.log(e);
       })
 
 
-    event.preventDefault();
-    event.stopPropagation();
-      
+      event.preventDefault();
+      event.stopPropagation();
     setValidated(true);
   };
   return (

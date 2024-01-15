@@ -39,8 +39,8 @@ const BookDetails = () => {
             <Header/>
 
             <h3 style={{ marginTop: "20px" }} className='text-center'>Booking Details </h3>
-            <div>
-                <Table striped bordered hover>
+            <div style={{width:"100%",overflowX:"scroll"}}>
+                <Table striped bordered hover >
                     <thead>
                         <tr>
                         

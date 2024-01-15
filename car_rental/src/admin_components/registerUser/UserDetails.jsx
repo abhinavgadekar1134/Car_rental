@@ -20,7 +20,7 @@ const UserDetails = () => {
                 console.log(err)
             }
             )
-    }, [])
+    }, [data1])
     const handleDelete = (email) => {
 
         axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/delete/${email}`)
@@ -39,7 +39,7 @@ const UserDetails = () => {
             <Header/>
             
             <h3 style={{ marginTop: "20px" }} className='text-center'>User Details </h3>
-            <div>
+            <div style={{width:"100%",overflowX:"scroll"}}>
                 <Table striped bordered hover>
                     <thead>
                         <tr>

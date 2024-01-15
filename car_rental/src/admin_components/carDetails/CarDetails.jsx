@@ -27,7 +27,7 @@ const CarDetails = () => {
                 console.log(err)
             }
             )
-    }, [])
+    }, [data1])
 
     const handleDelete = (carname) => {
 
@@ -59,6 +59,7 @@ const CarDetails = () => {
             </Modal>
 
             <h3 style={{ marginTop: "20px" }} className='text-center'>Car Details</h3>
+            <div style={{width:"100%",overflowX:"scroll"}}>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
@@ -105,7 +106,7 @@ const CarDetails = () => {
                     }
                 </tbody>
             </Table>
-
+            </div>
 
         </>
     )

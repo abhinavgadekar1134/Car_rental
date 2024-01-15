@@ -36,7 +36,7 @@ const Bookc = () => {
     const [desc, setdesc] = useState('');
     
     useEffect(() => {
-        axios.get(`http://localhost:8000/abc/findcar/${carrnamee}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -77,7 +77,7 @@ const Bookc = () => {
             curdate:new Date().getTime()
         }
 
-        axios.post('http://localhost:8000/abc/postbooking', setdata)
+        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postbooking`, setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("Your car is Booked");

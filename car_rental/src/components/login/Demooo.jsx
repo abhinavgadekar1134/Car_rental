@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Demooo = () => {
 
-    const [base64Image, setBase64Image] = useState('');
-    const handleImageInputChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+    // const [base64Image, setBase64Image] = useState('');
+    // const handleImageInputChange = (event) => {
+    //     const file = event.target.files[0];
+    //     const reader = new FileReader();
 
-        reader.onloadend = () => {
-            // 'reader.result' contains the base64 representation of the image
-            setBase64Image(reader.result);
-        };
+    //     reader.onloadend = () => {
+    //         // 'reader.result' contains the base64 representation of the image
+    //         setBase64Image(reader.result);
+    //     };
 
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    };
+    //     if (file) {
+    //         reader.readAsDataURL(file);
+    //     }
+    // };
 
     return (
         <div>

@@ -17,12 +17,10 @@ import BookDetails from './admin_components/carBookings/BookDetails';
 import CarAdd from './admin_components/carDetails/CarAdd';
 import Bookc from './components/Cars/Bookc';
 import BookUpdate from './admin_components/carBookings/BookUpdate';
-import Demooo from './components/login/Demooo'
 import AdminHome from './admin_components/Home/Home'
 function App() {
   return (
     <>
-    {/* <Header/>  */}
      <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/Home' element={<Home/>} />
@@ -50,7 +48,6 @@ function App() {
         
     </Routes> 
 
-    {/* <Demooo/> */}
     </>
   );
 }

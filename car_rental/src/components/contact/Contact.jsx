@@ -8,7 +8,6 @@ import React from 'react';
 import axios from 'axios';
 import Header from '../headerr/Header';
 import Footer from '../Footer/Footer';
-import { useNavigate } from 'react-router-dom';
 function Contact() {
   const [fname, setfname] = useState("");
   const [lname,setlname] = useState("");
@@ -18,7 +17,6 @@ function Contact() {
   const [contactno,setcontactno] = useState("");
   const [suggestion,setsuggestion] = useState("");
   const [validated, setValidated] = useState(false);
-  const navigate = useNavigate();
   const handleSubmit = (event) => {
     const setdata = {
       fname:fname,
@@ -30,7 +28,8 @@ function Contact() {
       suggestion:suggestion
     };
 
-    axios.post("https://car-backend-8cxh.onrender.com/abc/postcontact", setdata)
+    
+    axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postcontact`, setdata)
       .then((res) => {
         console.log(res.data);
         window.alert('Form submitted')

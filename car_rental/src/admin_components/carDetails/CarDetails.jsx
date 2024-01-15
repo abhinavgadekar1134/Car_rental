@@ -17,7 +17,7 @@ const CarDetails = () => {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        axios.get("https://car-backend-8cxh.onrender.com/abc/findallcar")
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/abc/findallcar`)
             .then(res => {
                 console.log(res.data)
                 setdata1(res.data.data)
@@ -32,7 +32,7 @@ const CarDetails = () => {
     const handleDelete = (carname) => {
 
 
-        axios.delete(`https://car-backend-8cxh.onrender.com/abc/deleteCar/${carname}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/deleteCar/${carname}`)
             .then(res => {
                 console.log(res.data);
                 window.alert('data deleted')

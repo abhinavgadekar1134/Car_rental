@@ -21,7 +21,7 @@ const CarUpdate = () => {
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
     useEffect(() => {
-         axios.get(`https://car-backend-8cxh.onrender.com/abc/findcar/${carrnamee}`)
+         axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -52,7 +52,7 @@ const CarUpdate = () => {
             noSeats:noSeats,
             desc: desc,
         }
-        axios.put(`https://car-rental-techthunder.netlify.app/abc/updateCar/${carrnamee}`, updata)
+        axios.put(`${process.env.REACT_APP_BACKEND_LINK}/updateCar/${carrnamee}`, updata)
             .then(res => {
                 console.log(res.data);
             })

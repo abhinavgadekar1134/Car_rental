@@ -10,7 +10,7 @@ const BookDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("https://car-backend-8cxh.onrender.com/abc/findallbooking")
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/abc/findallbooking`)
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)
@@ -23,7 +23,7 @@ const BookDetails = () => {
     }, [])
     const handleDelete = (useremail) => {
 
-        axios.delete(`http://localhost:8000/abc/deletebooking/${useremail}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/deletebooking/${useremail}`)
             .then(res => {
                 console.log(res.data);
                 window.alert("data deleted");

@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
-import Home from './Home/Home'
 import axios from 'axios'
 import './Admin.css'
-import { useNavigate } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap'
 const Admin = () => {
   
   const [uname, setuname] = useState('');
   const [upass, setupass] = useState('');
-  const navigate = useNavigate();
   const handleSubmit = () => {
     // navigate('/adminHome');
 
-    axios.get(`https://car-backend-8cxh.onrender.com/abc/adminlogin/${uname}/${upass}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_LINK}/adminlogin/${uname}/${upass}`)
       .then(res => {
         console.log(res.data.status);
         // setfname(res.data.name);

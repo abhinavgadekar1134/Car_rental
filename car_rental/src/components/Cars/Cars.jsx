@@ -14,6 +14,8 @@ import { MdAirlineSeatReclineExtra } from "react-icons/md"
 import { BsFuelPumpFill } from "react-icons/bs";
 import { MdCurrencyRupee } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+
+
 const Cars = () => {
 
   let val = localStorage.getItem("validatedUser");
@@ -30,9 +32,11 @@ const Cars = () => {
 
     }
   }
+
+
   const [data1, setdata1] = useState([])
   useEffect(() => {
-    axios.get("https://car-backend-8cxh.onrender.com/abc/findallcar")
+    axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallcar`)
       .then(res => {
         console.log(res.data)
         setdata1(res.data.data)

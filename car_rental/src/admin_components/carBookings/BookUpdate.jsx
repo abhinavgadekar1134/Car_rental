@@ -24,7 +24,7 @@ const BookUpdate = () => {
     const [payment ,setpayment ] = useState('500');
 
     useEffect(() => {
-        axios.get(`https://car-backend-8cxh.onrender.com/abc/findcar/${carrnamee}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -41,7 +41,7 @@ const BookUpdate = () => {
             }
             )
 
-            axios.get(`http://localhost:8000/abc/findbooking/${useremail}`).then(res => {
+            axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findbooking/${useremail}`).then(res => {
              
               console.log(res.data);
               setusermail(res.data.data.usermail);
@@ -68,7 +68,7 @@ const BookUpdate = () => {
             payment:payment
         }
 
-        axios.put(`http://localhost:8000/abc/updatebooking/${usermail}`, setdata)
+        axios.put(`${process.env.REACT_APP_BACKEND_LINK}/updatebooking/${usermail}`, setdata)
             .then(res => {
                 console.log(res.data);
             })

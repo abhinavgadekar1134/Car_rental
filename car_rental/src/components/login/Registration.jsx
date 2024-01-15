@@ -6,9 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
 const Registration = (event) => {
-    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [fname, setfname] = useState('');
     const [lname, setlname] = useState('');
@@ -32,7 +30,7 @@ const Registration = (event) => {
             address: address
         }
 
-        axios.post('https://car-backend-8cxh.onrender.com/abc/register', setdata)
+        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/register`, setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("You are successfully registered");

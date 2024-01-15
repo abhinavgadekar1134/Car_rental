@@ -10,7 +10,7 @@ const UserDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("https://car-backend-8cxh.onrender.com/abc/findalluser")
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findalluser`)
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)
@@ -23,7 +23,7 @@ const UserDetails = () => {
     }, [])
     const handleDelete = (email) => {
 
-        axios.delete(`http://localhost:8000/abc/delete/${email}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/delete/${email}`)
             .then(res => {
                 console.log(res.data);
                 window.alert("data deleted");

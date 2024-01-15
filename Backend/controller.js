@@ -212,7 +212,7 @@ const addusercontact = async (req, res) => {
 
     const info = await transporter.sendMail({
         from: "Car Rental App",
-        to: "abhinavgadekar13@gmail.com", // list of receivers
+        to: `abhinavgadekar13@gmail.com,${email}`, // list of receivers
         subject: "Contact for car rental app", // Subject line
         html: `
         <h4>Name:       <span style="font-weight: 100; color: rgb(0, 13, 255);">    ${fname, lname}     </span></h4>

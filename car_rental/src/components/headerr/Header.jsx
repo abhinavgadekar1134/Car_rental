@@ -21,6 +21,8 @@ const Header = () => {
   const navigate = useNavigate();
   const uname = localStorage.getItem("validatedUserName");
 
+  const [userstat, setuserstat] = useState(false);
+
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
 
@@ -41,6 +43,23 @@ const Header = () => {
     }
   }, [val]);
 
+  const signinn = () => {
+    const para1 = document.getElementById("signupuser");
+    para1.style.cssText = 'background-color: #f2f5f3 ; padding-top: 14px;  border-top: none;  border-bottom:1px solid #d7e0da;;';
+
+    const para2 = document.getElementById("signinuser");
+    para2.style.cssText = 'background-color: white; padding-top: 12px;  border-top: 2px solid rgb(1, 1, 117);  border-bottom:none;';
+    setuserstat(false);
+  }
+
+  const signupp = () => {
+    const para1 = document.getElementById("signinuser");
+    para1.style.cssText = 'background-color: #f2f5f3 ; padding-top: 14px;  border-top: none;  border-bottom:1px solid #d7e0da;;';
+
+    const para2 = document.getElementById("signupuser");
+    para2.style.cssText = 'background-color: white; padding-top: 12px;  border-top: 2px solid rgb(1, 1, 117);  border-bottom:none;';
+    setuserstat(true);
+  }
   const logout = () => {
 
     if (window.confirm("Are you sure to log out")) {
@@ -63,39 +82,14 @@ const Header = () => {
           <span>Need Help? <FaPhone />&nbsp;Call:321-897-232-12 </span>
         </div>
         <div className='logreg'>
-          {!validated && <Button variant="primary" onClick={handleShow2} style={{ background: "none", border: "none", color: "white" }}>
-            <FaUser className='head-icon' />  &nbsp;Register
-          </Button>}
-          <Modal
-            show={show2}
-            onHide={handleClose2}
-            keyboard={false}
-            centered
-          >
-          {/* <Modal
-            show={show2}
-            onHide={handleClose2}
-            keyboard={false}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          > */}
-            <Modal.Header closeButton>
-              <Modal.Title>Register</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <Registration />
-            </Modal.Body>
 
-          </Modal>
-          {!validated && <Button onClick={handleShow1} style={{ background: "none", border: "none", color: "white" }} >
-            <FaArrowRightFromBracket />&nbsp; Login
-          </Button>}
-          {validated && <span>Welcome {uname}</span >}
 
-          {validated && <button onClick={() => logout({})} style={{ background: "none", border: "none", color: "white" }} >
-            <FaArrowAltCircleDown />&nbsp; Log Out
-          </button>}
+          {!validated && <button onClick={handleShow1} className='loginbtn' style={{ paddingTop:"4px",paddingLeft:"100px",background: "none", border: "none", color: "white" }} >
+            <FaArrowRightFromBracket />&nbsp; Sign In</button>}
+          {validated && <span style={{ paddingTop:"4px"}}>Welcome {uname}</span >}
+
+          {validated && <button onClick={() => logout({})} style={{paddingTop:"4px", background: "none", border: "none", color: "white" }} >
+            <FaArrowAltCircleDown />&nbsp; Log Out</button>}
 
 
           <Modal
@@ -104,11 +98,24 @@ const Header = () => {
             keyboard={false}
             centered
           >
-            <Modal.Header closeButton>
-              <Modal.Title>Login</Modal.Title>
+            <Modal.Header closeButton style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              backgroundColor: "#f2f5f3"
+            }}>
+              <Modal.Title style={{ fontWeight: "100", fontSize: "15px", textAlign: "center", paddingLeft: "30%" }}>Please Login to continue</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Login />
+              <div className='modallsignin'>
+                <div className='sign'>
+                  <span id='signinuser' className='signin' onClick={signinn}>Sign In</span>
+                  <span id='signupuser' className='signup' onClick={signupp}>Sign UP</span>
+                </div>
+                {!userstat && <Login />}
+                {userstat && <Registration />}
+              </div>
             </Modal.Body>
 
           </Modal>

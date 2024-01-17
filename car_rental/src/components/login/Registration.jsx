@@ -41,16 +41,13 @@ const Registration = (event) => {
             .catch((err) => {
                 console.log(err);
             })
-
-            
-        
         setValidated(true);
 
     };
 
     return (
         <>
-            <div >
+            <div style={{padding:"20px 40px 0px 40px"}}>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationCustom01">
@@ -144,7 +141,7 @@ const Registration = (event) => {
                         </Form.Group>
                     </Row>
 
-                    <Button type="submit">Register</Button>
+                    <Button type="submit" className='btn-success'>Register</Button>
                 </Form>
             </div>
         </>

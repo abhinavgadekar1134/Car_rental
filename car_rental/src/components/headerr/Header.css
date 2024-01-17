@@ -17,7 +17,7 @@
     position: absolute;
     /* float: right; */
     right: 0px;
-    width: 300px;
+    width: 350px;
     /* background-color: hotpink; */
 }
 
@@ -58,6 +58,46 @@
     color: black;
 }
 
+
+.sign{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    padding: 0;
+}
+
+
+.sign span:hover{
+    cursor: pointer;
+}
+.pagessigninup{
+    display: none;
+}
+.modallsignin{
+    border: 1px solid rgb(1, 1, 117);  
+    height: 500px;
+}
+
+.signin{
+    background-color: white; 
+    border-top: 2px solid rgb(1, 1, 117);  
+    border-bottom:none;
+    width: 50%;
+    height: 50px;
+    border-right:1px solid #d7e0da;
+    background-color: white; 
+    padding-top: 12px;  
+}
+.signup{
+    width: 50%;
+    background-color: #f2f5f3 ;
+    padding-top: 14px;
+    height: 50px;
+}
+
+.loginbtn:active{
+    margin-left: 0px;
+}
 @media only screen and (max-width:1000px) {
     .con-btn {
         margin-left: 1px;
@@ -66,6 +106,5 @@
     .head {
         padding-left: 1px;
     }
-
-
+    
 }

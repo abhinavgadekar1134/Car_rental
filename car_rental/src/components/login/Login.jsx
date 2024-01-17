@@ -18,11 +18,12 @@ const Login = () => {
         navigate('/Admin');
     }
     const handleSubmit2 = (event) => {
-        
-        event.preventDefault();
-        event.stopPropagation();
-        
-        setValidated(true);
+       
+      event.preventDefault();
+      event.stopPropagation();
+   
+
+    setValidated(true);
 
         axios.get(`${process.env.REACT_APP_BACKEND_LINK}/login/${loginusername}/${loginpassword}`)
             .then(res => {
@@ -58,6 +59,7 @@ const Login = () => {
     
     return (
         <>
+        <div style={{padding:"0px 40px 0px 40px"}}>
             <Form noValidate validated={validated} onSubmit={handleSubmit2}>
                 <div class="imgcontainer">
                     <img src={avator} alt="Avatar" class="avatar" />
@@ -69,7 +71,7 @@ const Login = () => {
                             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                             <Form.Control
                                 type="text"
-                                placeholder="Username"
+                                placeholder="Username or email"
                                 aria-describedby="inputGroupPrepend"
                                 onChange={(e) => setloginusername(e.target.value)}
                                 required
@@ -107,7 +109,8 @@ const Login = () => {
                 
                 <Button type="submit" className='col-md-12 btn-success' >Login</Button>
             </Form>
-            <Button style={{background:"none",color:"black",border:"none"}} onClick={handleadmin}>Log in as admin</Button>
+            <button className='btnloginnn' onClick={handleadmin}>Log in as admin</button>
+            </div>
         </>
     )
 }

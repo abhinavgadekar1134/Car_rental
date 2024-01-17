@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     if (adnm == null) {
       setad(false);
-      window.alert("You need to login dont try like this");
+      window.alert("Please login");
       navigate('/Admin');
     }
     else {

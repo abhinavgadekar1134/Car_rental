@@ -64,7 +64,7 @@ const Cars = () => {
                     <Col md={3}>
                       <Card className='des1' border={false}>
                         {console.log(process.env.REACT_APP_BACKEND_LINK_IMG2+cc.carimg)}
-                        <Card.Img variant='top' src={`${process.env.REACT_APP_BACKEND_LINK_IMG2}/`+cc.carimg} alt="car img"/>
+                        <Card.Img variant='top' src={`${process.env.REACT_APP_BACKEND_LINK}/`+cc.carimg} alt="car img"/>
                         <Card.Body style={{ backgroundColor: 'white' }}>
                           <div style={{ top: '12px' }}>
                             <FaCar className='ic1' />

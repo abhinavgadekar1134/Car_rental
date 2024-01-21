@@ -86,7 +86,7 @@ const CarDetails = () => {
                                     <tr>
                                         {/* <th scope="row">1</th> */}
                                         <td>{ii.name}</td>
-                                        <td><img src={`${process.env.REACT_APP_BACKEND_LINK_IMG2}/`+ii.carimg} width='230' height='150' alt="car img" /></td>
+                                        <td><img src={`${process.env.REACT_APP_BACKEND_LINK}/`+ii.carimg} width='230' height='150' alt="car img" /></td>
                                         <td>{ii.model}</td>
                                         <td>{ii.cartype}</td>
                                         <td>{ii.rent}</td>

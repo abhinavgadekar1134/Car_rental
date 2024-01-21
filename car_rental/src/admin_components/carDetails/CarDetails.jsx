@@ -67,6 +67,7 @@ const CarDetails = () => {
                     <tr>
                         {/* <th>#</th> */}
                         <th>Name</th>
+                        <th>Images</th>
                         <th>Model</th>
                         <th>Car Type</th>
                         <th>Rent</th>
@@ -85,6 +86,7 @@ const CarDetails = () => {
                                     <tr>
                                         {/* <th scope="row">1</th> */}
                                         <td>{ii.name}</td>
+                                        <td>{ii.carimg}</td>
                                         <td>{ii.model}</td>
                                         <td>{ii.cartype}</td>
                                         <td>{ii.rent}</td>

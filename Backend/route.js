@@ -25,7 +25,7 @@ route.get('/login/:email/:password',Controller.loginuser)
 route.get('/adminlogin/:mail/:password',Controller.adminlogin)
 
 route.put('/update/:email',Controller.updateuser)
-route.put('/updateCar/:name',Controller.updatecar)
+route.put('/updateCar/:name',upload.upload.single('carimg'),Controller.updatecar)
 route.put('/updatebooking/:usermail',Controller.updateBooking)
 
 

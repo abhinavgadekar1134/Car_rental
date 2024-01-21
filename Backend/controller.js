@@ -100,15 +100,14 @@ const findElementbyid = async (req, res) => {
 
 // ------------------------------ Cars ---------------------------------
 const addcar = async (req, res) => {
-    let carimg ;
+    let carimg;
     const { name, model, cartype, rent, fuel, price, noSeats, desc } = req.body;
-    if(req.file)
-    {
+    if (req.file) {
         carimg = req.file.path
     }
     try {
         const cardata = new carmodal({
-            name, model, cartype, rent, fuel, price, noSeats, desc,carimg
+            name, model, cartype, rent, fuel, price, noSeats, desc, carimg
         })
         const data = await cardata.save();
 
@@ -120,13 +119,17 @@ const addcar = async (req, res) => {
     }
 }
 const updatecar = async (req, res) => {
+
     try {
         const { name } = req.params
-        const { model, cartype, rent, fuel, price, noSeats, desc ,carimg} = req.body
+        const { model, cartype, rent, fuel, price, noSeats, desc } = req.body
+        if (req.file) {
+            carimg = req.file.path
+        }
         const cdata = await carmodal.updateOne(
             { name },
             {
-                $set: { model, cartype, rent, fuel, price, noSeats, desc ,carimg}
+                $set: { model, cartype, rent, fuel, price, noSeats, desc, carimg }
             }
         )
         if (cdata.modifiedCount > 0) {
@@ -201,7 +204,7 @@ const addusercontact = async (req, res) => {
         console.log(err)
         res.status(400).send({ err })
     }
-    
+
     let dotenv = require('dotenv').config()
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',

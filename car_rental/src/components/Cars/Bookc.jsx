@@ -34,7 +34,7 @@ const Bookc = () => {
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
-
+    const [carimg,setcarimg] = useState('');
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
@@ -47,6 +47,7 @@ const Bookc = () => {
                 setprice(res.data.data.price);
                 setnoSeats(res.data.data.noSeats);
                 setdesc(res.data.data.desc);
+                setcarimg(res.data.data.carimg);
             }
             )
             .catch(err => {
@@ -98,7 +99,7 @@ const Bookc = () => {
                     <Row>
                         <Col mb={6}>
                             <div style={{ width: "50%", margin: "auto" }}>
-                                <img src={pic1} width={"500px"} alt="" />
+                                <img src={`${process.env.REACT_APP_BACKEND_LINK}/`+carimg} alt="car img" width={"500px"} height={"350px"} />
                                 <h5>Car Name: {name}</h5>
 
                                 <h5>Description:</h5>

@@ -136,7 +136,6 @@ const CarAdd = () => {
                                     placeholder="Upload car image"
                                     onChange={(e)=>setcarimg(e.target.files[0])}
                                 />
-                               {/* <input type="file" onChange={(e)=>console.log(e.target.files[0])} /> */}
                             </Col>
                             <Col lg={6}>
                                 

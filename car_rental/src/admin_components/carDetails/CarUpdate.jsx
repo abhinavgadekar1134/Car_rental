@@ -22,6 +22,7 @@ const CarUpdate = () => {
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
+    const [carimg, setcarimg] = useState('');
     useEffect(() => {
          axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
             .then(res => {
@@ -35,6 +36,7 @@ const CarUpdate = () => {
                 setprice(res.data.data.price);
                 setnoSeats(res.data.data.noSeats);
                 setdesc(res.data.data.desc);
+                setcarimg(res.data.data.carimg);
             }
             )
             .catch(err => {
@@ -143,6 +145,18 @@ const CarUpdate = () => {
                                     placeholder="EnterNO of seat"
                                     value={noSeats}
                                     onChange={(e) => { setnoSeats(e.target.value) }}
+                                />
+                            </Col>
+                            <Col lg={6}>
+                            
+                                <Form.Label>Car Image: </Form.Label>
+                            <img src={`${process.env.REACT_APP_BACKEND_LINK}/`+carimg} style={{padding:"20px"}} width='230' height='150' alt="car img" />
+
+                                <Form.Control
+                                    required
+                                    type="file"
+                                    placeholder="Upload car image"
+                                    onChange={(e)=>setcarimg(e.target.files[0])}
                                 />
                             </Col>
                             <Col lg={6}>

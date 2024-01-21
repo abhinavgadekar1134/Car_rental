@@ -100,12 +100,15 @@ const findElementbyid = async (req, res) => {
 
 // ------------------------------ Cars ---------------------------------
 const addcar = async (req, res) => {
-
+    let carimg ;
     const { name, model, cartype, rent, fuel, price, noSeats, desc } = req.body;
-
+    if(req.file)
+    {
+        carimg = req.file.path
+    }
     try {
         const cardata = new carmodal({
-            name, model, cartype, rent, fuel, price, noSeats, desc
+            name, model, cartype, rent, fuel, price, noSeats, desc,carimg
         })
         const data = await cardata.save();
 
@@ -119,11 +122,11 @@ const addcar = async (req, res) => {
 const updatecar = async (req, res) => {
     try {
         const { name } = req.params
-        const { model, cartype, rent, fuel, price, noSeats, desc } = req.body
+        const { model, cartype, rent, fuel, price, noSeats, desc ,carimg} = req.body
         const cdata = await carmodal.updateOne(
             { name },
             {
-                $set: { model, cartype, rent, fuel, price, noSeats, desc }
+                $set: { model, cartype, rent, fuel, price, noSeats, desc ,carimg}
             }
         )
         if (cdata.modifiedCount > 0) {

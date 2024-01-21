@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
+import './Header.css'
 const Header = () => {
     const navigate = useNavigate();
     const adname = localStorage.getItem('adminname');
@@ -40,7 +41,7 @@ const Header = () => {
                         <Navbar.Text>
                             Signed in as: <a href="#login">{adname}</a>
                         </Navbar.Text>
-                        <Button onClick={logout} style={{ marginLeft: "30px" }}>Log Out</Button>
+                        <Button className='bluebtnstyle' onClick={logout} style={{ marginLeft: "30px" }}>Log Out</Button>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

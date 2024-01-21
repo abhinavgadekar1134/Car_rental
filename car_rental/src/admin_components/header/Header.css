@@ -1,0 +1,8 @@
+.bluebtnstyle{
+    border-radius: 10%;
+    padding: 10px;
+
+}
+.bluebtnstyle:hover{
+    box-shadow: 2px 2px 20px rgba(0, 255, 255, 0.452);
+}

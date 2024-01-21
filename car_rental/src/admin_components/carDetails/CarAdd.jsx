@@ -17,29 +17,42 @@ const CarAdd = () => {
     const [price, setprice] = useState('');
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
+    const [carimg, setcarimg] = useState('');
+    
+    const handleSubmit = (event) => {
 
-    const handleSubmit = () => {
+        event.preventDefault()
 
         const setdata = {
 
-            name: name,
-            model: model,
-            cartype: cartype,
-            rent: rent,
-            fuel: fuel,
-            price: price,
-            noSeats: noSeats,
-            desc: desc,
+            name:       name,
+            model:      model,
+            cartype:    cartype,
+            rent:       rent,
+            fuel:       fuel,
+            price:      price,
+            noSeats:    noSeats,
+            desc:       desc,
+            carimg:     carimg
+
         }
 
-        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postcar`, setdata)
-            .then(res => {
-                console.log(res.data);
-                window.alert("Car data added");
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        axios({
+            url:`${process.env.REACT_APP_BACKEND_LINK}/postcar`,
+            method:'POST',
+            data:setdata,
+            headers:{
+                "Content-Type": "multipart/form-data",
+            }
+            
+        }).then(res => {
+            console.log(res.data);
+            window.alert("Car data added");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
         setValidated(true);
 
     }
@@ -114,6 +127,16 @@ const CarAdd = () => {
                                     onChange={(e) => { setnoSeats(e.target.value) }}
                                 />
                                
+                            </Col>
+                            <Col lg={6}>
+                                <Form.Label>Car Image</Form.Label>
+                                <Form.Control
+                                    required
+                                    type="file"
+                                    placeholder="Upload car image"
+                                    onChange={(e)=>setcarimg(e.target.files[0])}
+                                />
+                               {/* <input type="file" onChange={(e)=>console.log(e.target.files[0])} /> */}
                             </Col>
                             <Col lg={6}>
                                 

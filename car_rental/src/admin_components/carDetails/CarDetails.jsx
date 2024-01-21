@@ -27,7 +27,7 @@ const CarDetails = () => {
                 console.log(err)
             }
             )
-    }, [data1])
+    }, [])
 
     const handleDelete = (carname) => {
 

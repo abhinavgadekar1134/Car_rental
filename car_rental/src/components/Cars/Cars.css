@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap');
 
+.des1:hover{
+  box-shadow: 5px 5px 20px rgb(144, 142, 142);
+  transition: box-shadow 400ms;
+}
 .head1
 {
    font-family:'Roboto';

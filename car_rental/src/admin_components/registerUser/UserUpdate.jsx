@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import {  useNavigate } from 'react-router-dom';
-
+import Header from '../header/Header'
 const UserUpdate = (props) => {
     const [validated, setValidated] = useState(false);
     const [fname, setfname] = useState('');
@@ -68,7 +68,7 @@ const UserUpdate = (props) => {
 
     return (
         <>
-        
+            <Header/>
             <div style={{ margin: "auto", width: "50%", marginTop: "30px" }}>
             <h1 className='text-center'>User Updation Form</h1>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -127,7 +127,7 @@ const UserUpdate = (props) => {
                             type="tel"
                             placeholder="phone"
                             value={email}
-                            onChange={(e) => setcontact(e.target.value)}
+                            onChange={(e) => setemail(e.target.value)}
                         />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>

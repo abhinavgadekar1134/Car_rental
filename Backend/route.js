@@ -1,5 +1,5 @@
 const express = require('express')
-
+const upload = require("./upload")
 const Controller = require('./controller')
 
 const route = express.Router()
@@ -9,7 +9,7 @@ const route = express.Router()
 route.post('/register', Controller.addcust)
 route.post('/postcontact', Controller.addusercontact)
 route.post('/postbooking', Controller.addBooking)
-route.post('/postcar', Controller.addcar)
+route.post('/postcar',upload.upload.single('carimg') ,Controller.addcar)
 
 
 route.get('/findalluser' ,Controller.getdata)

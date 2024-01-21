@@ -134,7 +134,7 @@ const Header = () => {
               <Link className='nav-linkss' to={"/Blog"}>Blog</Link>
               <Link className='nav-linkss' to={"/Contact"}>Contact</Link>
             </Nav>
-            <Form inline>
+            {/* <Form inline>
               <Row>
                 <Col xs="auto">
                   <Form.Control
@@ -147,7 +147,7 @@ const Header = () => {
                   <Button type="submit">Submit</Button>
                 </Col>
               </Row>
-            </Form>
+            </Form> */}
           </Navbar.Collapse>
 
         </Container>

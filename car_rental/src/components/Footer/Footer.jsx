@@ -1,12 +1,13 @@
 import React from 'react'
 
 import './Footer.css'
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { IoMdCall } from 'react-icons/io';
 import { MdEmail } from 'react-icons/md';
-
+import { useNavigate } from 'react-router-dom';
 const Footer = () => {
+    const navigate = useNavigate();
     return (
         <>
             <div class="card text-center" style={{ backgroundColor: "rgb(7, 8, 71)", borderRadius: "0%" }}>
@@ -22,7 +23,8 @@ const Footer = () => {
                             <Col lg={4}>
                                 <h5 class="card-title">Want to know more?</h5>
                                 <p class="card-text">Click Below to Contact</p>
-                                <a href="#e" class="btn btn-primary">Contact Us</a>
+                                <Button class="btn btn-primary" onClick={()=>{navigate('/Contact');window.scrollTo(0, 0);}}>Contact Us</Button>
+
                                 <br /><br />
                                 <div className="social-media-link">
                                 <ul className='ssss'>

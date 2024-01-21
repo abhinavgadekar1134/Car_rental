@@ -8,6 +8,10 @@ import b2 from '../Images/Pic/blog-3.jpg'
 import b3 from '../Images/Pic/drive.jpg'
 import dri from '../Images/Pic/bmwoffer.png'
 
+import s1 from '../Images/slider-img/s1.jpg'
+import s2 from '../Images/slider-img/s2.jpeg'
+import s3 from '../Images/slider-img/s3.jpg'
+
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -22,7 +26,9 @@ import Cars from '../Cars/Cars';
 import Header from '../headerr/Header';
 import { FaBolt, FaCarSide, FaCity, FaPlaneDeparture, FaCheckDouble } from 'react-icons/fa';
 import Carousel from 'react-bootstrap/Carousel';
-const Home = () => {
+import Login from '../login/Login';
+
+const Home = (show1) => {
   
   return (
     <>
@@ -63,17 +69,17 @@ const Home = () => {
 
         <Carousel>
           <Carousel.Item>
-            <img src={img1} alt="" srcset="" />
+            <img src={s1} alt="" srcset="" />
             <Carousel.Caption>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img src={img2} alt="" srcset="" />
+            <img src={s2} alt="" srcset="" />
             <Carousel.Caption>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img src={img3} alt="" srcset="" />
+            <img src={s3} alt="" srcset="" />
             <Carousel.Caption>
 
             </Carousel.Caption>
@@ -85,7 +91,8 @@ const Home = () => {
               <h5>For rent 500₹ Per Day</h5>
               <h2>Reserved Now and Get 50%</h2><br />
               <h2>Off</h2><br /><br />
-              <Button>Reserve now</Button>
+              <Button href='#hotofferscar'>Reserve now</Button>
+              
             </div>
 
           </div>
@@ -226,8 +233,8 @@ const Home = () => {
         </Container>
       </div>
       <br /><br />
-      <div>
-        <Container>
+      <div id='hotofferscar' >
+        <Container >
           <Row>
             <Col lg="12" className="mb-5 text-center">
               <h6 className="section__subtitle">Come With</h6>

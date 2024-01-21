@@ -60,9 +60,11 @@ const Cars = () => {
               data1.map((cc) => {
                 return (
                   <>
+                  
                     <Col md={3}>
                       <Card className='des1' border={false}>
-                        <Card.Img variant='top' src={pic1} />
+                        {console.log(process.env.REACT_APP_BACKEND_LINK_IMG2+cc.carimg)}
+                        <Card.Img variant='top' src={`${process.env.REACT_APP_BACKEND_LINK_IMG2}/`+cc.carimg} alt="car img"/>
                         <Card.Body style={{ backgroundColor: 'white' }}>
                           <div style={{ top: '12px' }}>
                             <FaCar className='ic1' />

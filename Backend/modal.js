@@ -20,7 +20,8 @@ const carSchema = mongoose.Schema({
     rent:Number,
     fuel:String,
     price:Number,
-    noSeats:Number
+    noSeats:Number,
+    carimg:String
 })
 
 const contactSchema=mongoose.Schema({

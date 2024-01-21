@@ -13,6 +13,7 @@ mongoose.connect('mongodb+srv://abhinavgadekar5:Abhikumar%40146@cluster0.nwnyi1y
 
 app.use(cons())
 app.use(express.json())
+app.use('/abc/uploads',express.static('uploads'))
 const route = require('./route')
 app.use('/abc',route)
 

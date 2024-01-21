@@ -38,7 +38,7 @@ const CarAdd = () => {
         }
 
         axios({
-            url:`${process.env.REACT_APP_BACKEND_LINK}/postcar`,
+            url:`${process.env.REACT_APP_BACKEND_LINK_IMG2}/postcar`,
             method:'POST',
             data:setdata,
             headers:{

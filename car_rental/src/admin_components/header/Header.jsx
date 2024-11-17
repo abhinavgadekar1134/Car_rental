@@ -33,7 +33,7 @@ const Header = () => {
                             <Link className='nav-link' to={"/adminHome"}>Home</Link>
                             <Link className='nav-link' to={"/ViewUsers"}>View Customers</Link>
                             <Link className='nav-link' to={"/BookDetails"}>View Bookings</Link>
-                            <Link className='nav-link' to={"/ViewAdmins"}>View Admins</Link>
+                            {/* <Link className='nav-link' to={"/ViewAdmins"}>View Admins</Link> */}
                             <Link className='nav-link' to={"/findallcontact"}>ContactsUs</Link>
                         </Nav>
                     </Navbar.Collapse>

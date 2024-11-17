@@ -20,7 +20,7 @@ const Bookc = () => {
     const [noSeats, setnoSeats] = useState('');
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findcar/${carrnamee}`)
             .then(res => {
                 const setdata = res.data.data;
                 console.log(res.data);
@@ -57,7 +57,7 @@ const Bookc = () => {
             payment:payment
         }
 
-        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postbooking`, setdata)
+        axios.post(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/postbooking`, setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("Your car is Booked");

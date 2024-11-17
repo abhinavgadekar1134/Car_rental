@@ -10,7 +10,7 @@ const UserDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findalluser`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findalluser`)
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)
@@ -23,7 +23,7 @@ const UserDetails = () => {
     }, [data1])
     const handleDelete = (email) => {
 
-        axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/delete/${email}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/delete/${email}`)
             .then(res => {
                 console.log(res.data);
                 window.alert("data deleted");

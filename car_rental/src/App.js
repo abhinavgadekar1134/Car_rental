@@ -19,9 +19,12 @@ import Bookc from './components/Cars/Bookc';
 import BookUpdate from './admin_components/carBookings/BookUpdate';
 import AdminHome from './admin_components/Home/Home'
 import { useEffect, useState } from 'react';
+import HIstory from './components/History/HIstory';
+import GiveFeedback from './components/History/GiveFeedback';
+import Car_Ratings from './components/History/Car_Ratings';
 function App() {
   return (
-
+    
     <>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -48,6 +51,11 @@ function App() {
         <Route path='/CarAdd' element={<CarAdd />} />
         <Route path='/BookUpdate' element={<BookUpdate />} />
         <Route path='/adminHome' element={<AdminHome />} />
+        <Route path='/History' element={<HIstory />} />
+        <Route path='/GiveFeedBack' element={<GiveFeedback />} />
+        <Route path='/CarRatings' element={<Car_Ratings />} />
+
+
       </Routes>
       
 

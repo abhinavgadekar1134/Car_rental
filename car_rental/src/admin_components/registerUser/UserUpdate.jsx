@@ -31,7 +31,7 @@ const UserUpdate = (props) => {
             gender: gender,
             address: address
         }
-        axios.put(`${process.env.REACT_APP_BACKEND_LINK}/update/${emailid}`, updata)
+        axios.put(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/update/${emailid}`, updata)
             .then(res => {
                 console.log(res.data)
             })
@@ -46,7 +46,7 @@ const UserUpdate = (props) => {
     }
     useEffect(() => {
 
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/finduser/${emailid}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/finduser/${emailid}`)
             .then(res => {
                 console.log(res.data);
                 setfname(res.data.fname);

@@ -53,7 +53,15 @@ const adminSchema = mongoose.Schema({
     password:String
 })
 
+const FeedBackSchema = mongoose.Schema({
+    name:String,
+    usermail:String,
+    feedBack:String,
+    ratings:String
+
+})
+
 // mongoose.pluralize(null);
 // module.exports = mongoose.model('registeredcustomers', userSchema)
-module.exports = {userSchema,carSchema,contactSchema,bookingSchema,adminSchema}
+module.exports = {userSchema,carSchema,contactSchema,bookingSchema,adminSchema,FeedBackSchema}
 // module.exports = mongoose.model('cars', carSchema)

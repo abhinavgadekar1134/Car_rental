@@ -7,7 +7,7 @@ const Contact = () => {
   const [data1, setdata1] = useState([])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallcontact`)
+    axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findallcontact`)
       .then(res => {
         console.log(res.data)
         setdata1(res.data.data)
@@ -22,7 +22,7 @@ const Contact = () => {
   const handleDelete = (email) => {
 
 
-    axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/deleteCont/${email}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/deleteCont/${email}`)
       .then(res => {
         console.log(res.data);
         window.alert('data deleted')

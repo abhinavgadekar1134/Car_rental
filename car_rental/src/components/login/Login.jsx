@@ -25,7 +25,7 @@ const Login = () => {
 
     setValidated(true);
 
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/login/${loginusername}/${loginpassword}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/login/${loginusername}/${loginpassword}`)
             .then(res => {
                 console.log(res.data.status);
                 // setfname(res.data.name);

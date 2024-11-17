@@ -1,0 +1,51 @@
+.myclassrat{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, rgb(87, 151, 191), rgb(119, 43, 206));
+}
+.rating-input {
+    font-family: Arial, sans-serif;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    border: 1px solid blue;
+    padding: 40px;
+    background: cover;
+    display: block;
+    background-color: white;
+    border-top-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+  }
+  
+  .rating-stars {
+    margin-bottom: 20px;
+  }
+  
+  .star {
+    cursor: pointer;
+    
+  }
+  
+  .star.active {
+    color: orange; /* Change star color to orange for active/starred stars */
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #starrat{
+    font-size: 50px;
+  }
+  .carnamespan{
+    color: rgb(180, 109, 17);
+  }

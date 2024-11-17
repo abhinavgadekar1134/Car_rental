@@ -29,7 +29,7 @@ const Blog = () => {
                 </Card.Text>
                 <a href="https://www.wikihow.com/Drive-a-Car"><Button variant="primary">Read More</Button></a>
                 <hr></hr>
-                <VscAccount />   Pranav
+                <VscAccount />   Abhinav
               </Card.Body>
             </Card>
           </Col>
@@ -60,7 +60,7 @@ const Blog = () => {
                 </Card.Text>
                 <a href="https://www.wikihow.com/Check-Your-Fuel-Pump"><Button variant="primary">Read More</Button></a>
                 <hr></hr>
-                <VscAccount />   Pranav
+                <VscAccount />   Prakash
               </Card.Body>
             </Card>
           </Col>
@@ -80,7 +80,7 @@ const Blog = () => {
                 </Card.Text>
                 <a href="https://www.wikihow.com/Drive-at-Night"><Button variant="primary">Read More</Button></a>
                 <hr></hr>
-                <VscAccount />   Pranav
+                <VscAccount />   Abhinav
               </Card.Body>
             </Card>
           </Col>
@@ -95,7 +95,7 @@ const Blog = () => {
                 </Card.Text>
                 <a href="https://www.wikihow.com/Avoid-Accidents-While-Driving"><Button variant="primary">Read More</Button></a>
                 <hr></hr>
-                <VscAccount />   Pranav
+                <VscAccount />   Abhinav
               </Card.Body>
             </Card>
           </Col>

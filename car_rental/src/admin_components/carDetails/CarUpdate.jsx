@@ -23,8 +23,10 @@ const CarUpdate = () => {
     const [noSeats, setnoSeats] = useState('');
     const [desc, setdesc] = useState('');
     const [carimg, setcarimg] = useState('');
+    const [cistat, setcistat] = useState(false);
+
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -46,7 +48,7 @@ const CarUpdate = () => {
     }, [carrnamee]);
 
     const handleSubmit = (event) => {
-        const updata = {
+        let updata = {
             model: model,
             cartype: cartype,
             carmodel: carmodel,
@@ -57,13 +59,12 @@ const CarUpdate = () => {
             desc: desc,
             carimg:carimg
         }
+
+        console.log(updata)
         axios({
-            url:`${process.env.REACT_APP_BACKEND_LINK}/updateCar/${carrnamee}`,
+            url:`${process.env.REACT_APP_BACKEND_LINK_IMG2}/updateCar/${carrnamee}`,
             method:'PUT',
-            data:updata,
-            headers:{
-                "Content-Type": "multipart/form-data",
-            }
+            data:updata
             
         })
             .then(res => {
@@ -159,13 +160,13 @@ const CarUpdate = () => {
                         <Col lg={6}>
 
                             <Form.Label>Car Image: </Form.Label>
-                            <img src={`${process.env.REACT_APP_BACKEND_LINK}/` + carimg} style={{ padding: "20px" }} width='230' height='150' alt="car img" />
+                            <img src={ carimg} style={{ padding: "20px" }} width='230' height='150' alt="car img" />
 
                             <Form.Control
                                 required
                                 type="file"
                                 placeholder="Upload car image"
-                                onChange={(e) => setcarimg(e.target.files[0])}
+                                onChange={(e) =>{ setcarimg(e.target.files[0]); setcistat(true)}}
                             />
                         </Col>
                         <Col lg={6}>

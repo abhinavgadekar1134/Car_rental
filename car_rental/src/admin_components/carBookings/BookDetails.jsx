@@ -10,7 +10,7 @@ const BookDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallbooking`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findallbooking`)
             .then(res => {
                 console.log(res.data)
                 setdata(res.data.data)
@@ -23,7 +23,7 @@ const BookDetails = () => {
     }, [])
     const handleDelete = (useremail) => {
 
-        axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/deletebooking/${useremail}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/deletebooking/${useremail}`)
             .then(res => {
                 console.log(res.data);
                 window.alert("data deleted");

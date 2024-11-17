@@ -38,7 +38,7 @@ const Cars = () => {
 
   const [data1, setdata1] = useState([])
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallcar`)
+    axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findallcar`)
       .then(res => {
         console.log(res.data)
         setdata1(res.data.data)
@@ -65,8 +65,8 @@ const Cars = () => {
                   
                     <Col md={3}>
                       <Card className='des1' border={false}>
-                        {console.log(process.env.REACT_APP_BACKEND_LINK_IMG2+cc.carimg)}
-                        <Card.Img variant='top' style={{height: "20vh"}}  src={`${process.env.REACT_APP_BACKEND_LINK}/`+cc.carimg} alt="car img"/>
+                        {console.log(cc.carimg)}
+                        <Card.Img variant='top' style={{height: "20vh"}}  src={cc.carimg} alt="car img"/>
                         <Card.Body style={{ backgroundColor: 'white' }}>
                           <div style={{ top: '12px' }}>
                             <FaCar className='ic1' />
@@ -97,7 +97,10 @@ const Cars = () => {
                             </p>
                           </div>
                           <br></br>
-
+                          <span> <a href="" onClick={()=>{
+                            localStorage.setItem("carname",cc.name);
+                            navigate('/CarRatings');
+                          }}>Ratings</a> </span>
                           <div style={{ marginTop: '10px', background: "none" }}>
                             <Button variant="success" size="sm" onClick={(props) => {
                               Book(cc.name)

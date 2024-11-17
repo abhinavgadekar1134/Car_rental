@@ -32,7 +32,7 @@ const Registration = (event) => {
             address: address
         }
 
-        axios.post(`${process.env.REACT_APP_BACKEND_LINK}/register`, setdata)
+        axios.post(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/register`, setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("You are successfully registered");

@@ -133,6 +133,8 @@ const Header = () => {
               <Link className='nav-linkss' to={"/CarsPage"}>Cars</Link>
               <Link className='nav-linkss' to={"/Blog"}>Blog</Link>
               <Link className='nav-linkss' to={"/Contact"}>Contact</Link>
+              <Link className='nav-linkss' to={"/History"}>History</Link>
+
             </Nav>
             {/* <Form inline>
               <Row>

@@ -17,7 +17,7 @@ const CarDetails = () => {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findallcar`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findallcar`)
             .then(res => {
                 console.log(res.data)
                 setdata1(res.data.data)
@@ -34,7 +34,7 @@ const CarDetails = () => {
     const handleDelete = (carname) => {
 
 
-        axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/deleteCar/${carname}`)
+        axios.delete(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/deleteCar/${carname}`)
             .then(res => {
                 console.log(res.data);
                 window.alert('data deleted')
@@ -84,9 +84,8 @@ const CarDetails = () => {
                             return (
                                 <>
                                     <tr>
-                                        {/* <th scope="row">1</th> */}
                                         <td>{ii.name}</td>
-                                        <td><img src={`${process.env.REACT_APP_BACKEND_LINK}/`+ii.carimg} width='230' height='150' alt="car img" /></td>
+                                        <td><img src={ii.carimg} width='230' height='150' alt="car img" /></td>
                                         <td>{ii.model}</td>
                                         <td>{ii.cartype}</td>
                                         <td>{ii.rent}</td>

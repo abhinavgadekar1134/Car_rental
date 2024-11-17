@@ -279,11 +279,10 @@ const Home = (show1) => {
                   <Card.Title>The Best way to Drive</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                  Driving a car safely involves several key practices This key practices are given are as follows :
                   </Card.Text>
 
-                  <Card.Link href="#">Read More</Card.Link>
+                  <Card.Link href="https://www.wikihow.com/Drive-a-Car">Read More</Card.Link>
                 </Card.Body>
               </Card>
 
@@ -295,11 +294,11 @@ const Home = (show1) => {
                   <Card.Title>If Your Car battary is Low</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                  If your car battery is dead, here are a few steps you can take
+                  As follows:
                   </Card.Text>
 
-                  <Card.Link href="#">Read More</Card.Link>
+                  <Card.Link href="https://www.wikihow.com/Survive-a-Long-Road-Trip">Read More</Card.Link>
                 </Card.Body>
               </Card>
 
@@ -311,11 +310,10 @@ const Home = (show1) => {
                   <Card.Title>The Best way to Give trip</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
                   <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                  Giving a trip or a ride to someone involves several considerations to ensure safety, comfort, etc..
                   </Card.Text>
 
-                  <Card.Link href="#">Read More</Card.Link>
+                  <Card.Link href="https://www.wikihow.com/Check-Your-Fuel-Pump">Read More</Card.Link>
                 </Card.Body>
               </Card>
 

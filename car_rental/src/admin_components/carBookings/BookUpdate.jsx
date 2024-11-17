@@ -25,7 +25,7 @@ const BookUpdate = () => {
     const [payment, setpayment] = useState('500');
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findcar/${carrnamee}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findcar/${carrnamee}`)
             .then(res => {
                 console.log(res.data);
                 setname(res.data.data.name);
@@ -42,7 +42,7 @@ const BookUpdate = () => {
             }
             )
 
-        axios.get(`${process.env.REACT_APP_BACKEND_LINK}/findbooking/${useremail}`).then(res => {
+        axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/findbooking/${useremail}`).then(res => {
 
             console.log(res.data);
             setusermail(res.data.data.usermail);
@@ -69,7 +69,7 @@ const BookUpdate = () => {
             payment: payment
         }
 
-        axios.put(`${process.env.REACT_APP_BACKEND_LINK}/updatebooking/${usermail}`, setdata)
+        axios.put(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/updatebooking/${usermail}`, setdata)
             .then(res => {
                 console.log(res.data);
                 window.alert("Date updated");

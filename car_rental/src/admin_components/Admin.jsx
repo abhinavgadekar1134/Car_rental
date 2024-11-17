@@ -12,7 +12,7 @@ const Admin = () => {
 
     event.preventDefault();
     event.stopPropagation();
-    axios.get(`${process.env.REACT_APP_BACKEND_LINK}/adminlogin/${uname}/${upass}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/adminlogin/${uname}/${upass}`)
       .then(res => {
         console.log(res.data.status);
         // setfname(res.data.name);

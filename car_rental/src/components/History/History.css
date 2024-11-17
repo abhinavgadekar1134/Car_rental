@@ -1,0 +1,58 @@
+.InnerTable {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nodisplay{
+    display: none;
+}
+.feedbackMainDiv {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    
+    padding: 14px;
+    border: 1px solid rgb(241, 239, 237);
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+.feedbackMainDiv:hover{
+    background-color: #ececec
+}
+.feedback1 {
+    /* background-color: aqua; */
+    text-align: right;
+    margin-top: 10px;
+    position: relative;
+}
+
+.feedback1 h4 {
+    text-align: left;
+}
+
+.feedback2 {
+    margin-top: 20px;
+    /* background-color: aquamarine; */
+    margin-left: 2%;
+}
+.feedback2 p{
+    margin-bottom: 0px;
+}
+.starsDiv {
+    position: absolute;
+    top: 1px;
+    right: 15%;
+    border-radius: 5px;
+    font-size: 26px;
+}
+.feedin{
+    margin-left: 7%;
+}
+.useicon{
+    font-size: 27px;
+    position: absolute;
+    top: 23px;
+    left: 20;
+}

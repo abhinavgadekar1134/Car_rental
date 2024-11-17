@@ -1,6 +1,7 @@
 const modal = require('./modal')
 const mongoose = require('mongoose')
 const nodemailer = require("nodemailer");
+const { upload,uploadToCloudinary } = require('./upload');
 
 mongoose.pluralize(null);
 const custmodal = mongoose.model('registeredcustomers', modal.userSchema)
@@ -8,6 +9,8 @@ const carmodal = mongoose.model('car', modal.carSchema)
 const contactmodal = mongoose.model('contact', modal.contactSchema)
 const bookingmodal = mongoose.model('bookings', modal.bookingSchema)
 const adminModal = mongoose.model('admin', modal.adminSchema)
+const FeedBackModal = mongoose.model('FeedBack', modal.FeedBackSchema)
+
 // ------------------------------------ Customers ---------------------------------------------------
 const addcust = async (req, res) => {
     const { fname, lname, password, dob, email, contactno, gender, address } = req.body;
@@ -105,21 +108,26 @@ const addcar = async (req, res) => {
     if (req.file) {
         carimg = req.file.path
     }
+    
     try {
+        const result = await uploadToCloudinary(carimg, 'upload'); // Upload to Cloudinary
+        carimgAtCloud = result.secure_url;
+        carimg = carimgAtCloud;
         const cardata = new carmodal({
             name, model, cartype, rent, fuel, price, noSeats, desc, carimg
         })
+        
         const data = await cardata.save();
-
         res.status(200).send({ data })
     }
     catch (err) {
-        console.log(err)
+        // console.log(err)
         res.status(400).send({ err })
     }
+
 }
 const updatecar = async (req, res) => {
-
+    let carimg;
     try {
         const { name } = req.params
         const { model, cartype, rent, fuel, price, noSeats, desc } = req.body
@@ -377,6 +385,69 @@ const loginuser = async (req, res) => {
 
 }
 
+// ----------------------  FeedBack  ------------------------------------------------
+const addFeedBack = async (req, res) => {
+    const { name, usermail, feedBack, ratings } = req.body;
+
+    try {
+        const feedBackdata = new FeedBackModal({
+            name, usermail, feedBack, ratings
+        })
+        const data = await feedBackdata.save();
+
+        res.status(200).send({ data })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(400).send({ err })
+    }
+}
+
+
+const getFeedBackdata = async (req, res) => {
+    const feedBackdata = await FeedBackModal.find();
+
+    try {
+        res.status(200).send({ data: feedBackdata, msg: "success" })
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({ error });
+    }
+}
+
+
+const deleteFeedBack = async (req, res) => {
+
+    try {
+        const { email } = req.params
+        const feedBackdata = await FeedBackModal.deleteOne({ email })
+
+        if (feedBackdata.deletedCount > 0) {
+            res.status(200).send({ msg: "Data deleted" })
+        }
+        else {
+            res.status(200).send({ msg: "Data not deleted" })
+
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({ msg: "data cant delete" })
+    }
+}
+
+const findFeedBackbyid = async (req, res) => {
+    try {
+        const { name } = req.params
+        const feedBackdata = await FeedBackModal.findOne({ name })
+        res.status(200).send(feedBackdata)
+    } catch (error) {
+        console.log(error);
+        res.status(400).send("Not found")
+    }
+
+}
+// ----------------------- End Feed BAck --------------------------------------
 // ----------Admin login
 const adminlogin = async (req, res) => {
     try {
@@ -404,6 +475,7 @@ module.exports = {
     addcar, getcardata, findCarbyid, updatecar, deleteCar,
     addusercontact, deleteCont, getContactData,
     addBooking, getBookingData, updateBooking, deleteBooking, findBookingbyid,
-    loginuser, adminlogin
+    loginuser, adminlogin,
+    addFeedBack, getFeedBackdata, deleteFeedBack, findFeedBackbyid
 }
 

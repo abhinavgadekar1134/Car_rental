@@ -31,7 +31,7 @@ function Contact() {
     };
 
     
-    axios.post(`${process.env.REACT_APP_BACKEND_LINK}/postcontact`, setdata)
+    axios.post(`${process.env.REACT_APP_BACKEND_LINK_IMG2}/postcontact`, setdata)
       .then((res) => {
         console.log(res.data);
         window.alert('Form submitted');

@@ -30,7 +30,7 @@ const Admin = () => {
       }
       )
       .catch(err => {
-        window.alert("username or password not matcheddddddd");
+        window.alert("username or password not matched");
         console.log(err);
         navigate('/Admin');
       }

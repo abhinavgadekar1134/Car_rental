@@ -87,7 +87,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control
                             required
-                            type="text"
+                            type="password"
                             placeholder="Password"
                             onChange={(e) => setloginpassword(e.target.value)}
                             defaultValue=""

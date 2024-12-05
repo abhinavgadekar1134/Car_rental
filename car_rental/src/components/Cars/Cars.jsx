@@ -85,7 +85,7 @@ const Cars = () => {
                           <div>
                             <BsFuelPumpFill className='ic2' />
                             <p className='p1' style={{ display: 'inline', position: 'relative', left: '20px' }}>
-                              {cc.cartype}
+                              {cc.fuel}
                             </p>
                           </div>
                           <br></br>

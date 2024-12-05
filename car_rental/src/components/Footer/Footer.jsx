@@ -55,7 +55,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="foot" style={{ borderRadius: "0%" }}>
-                <p>© Copyright 2023 . All Rights Reserved.    Abhinav Gadekar ,Prakash Bhabad,Pranav Deshmukh </p>
+                <p>© Copyright 2024 . All Rights Reserved.    Abhinav Gadekar ,Prakash Bhabad,Pranav Deshmukh </p>
                 <p></p>
             </div>
         </>
